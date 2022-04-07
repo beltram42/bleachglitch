@@ -15,7 +15,6 @@ int	ft_key(int key, void *id[2])
 	char	*command = "afplay DrillOut.aiff";
 
 	ft_putchar('X'); // X print in shell window, to make sure the listener works
-	system(command);
 	y = 80;
 	while (y <= 280)
 	{
@@ -27,6 +26,7 @@ int	ft_key(int key, void *id[2])
 		}
 		y++;
 	}
+	system(command);
 	return 0;
 }
 
