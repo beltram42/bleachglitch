@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strspn.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/21 18:54:13 by alambert          #+#    #+#             */
-/*   Updated: 2022/04/07 17:02:13 by alambert         ###   ########.fr       */
+/*   Created: 2022/04/07 16:49:33 by alambert          #+#    #+#             */
+/*   Updated: 2022/04/07 17:05:18 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_strspn(const char *str, const char *set)
-{
-    const char  *p;
-    const char  *s;
+#include <stdio.h>
 
-    p = str;
-    while (*p)
-    {
-        s = set;
-        s = ft_strchr(s, *p);
-        if (s == 0)
-            break;
-        else
-            p++;
-    }
-    return (p - str);
+char *ft_strpbrk(const char *str, const char *set);
+
+int ft_strspn(const char *str, const char *set);
+
+int	main(void)
+{
+	const char 	*str = "Azur! nos bêtes sont bondées d’un cri !";
+	const char	*set = " !";
+	char	*ptr;
+	int	v;
+
+	ptr = ft_strpbrk(str, set);
+	printf("ptr = %s", ptr);
+
+	v = ft_strspn(str, set);
+	printf("span = %d", v);
+	
+	return (0);
 }

@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strspn.c                                        :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/21 18:54:13 by alambert          #+#    #+#             */
-/*   Updated: 2022/04/07 17:02:13 by alambert         ###   ########.fr       */
+/*   Created: 2021/11/23 15:19:52 by alambert          #+#    #+#             */
+/*   Updated: 2022/01/24 20:18:43 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-int ft_strspn(const char *str, const char *set)
+int	ft_isalpha(int c)
 {
-    const char  *p;
-    const char  *s;
-
-    p = str;
-    while (*p)
-    {
-        s = set;
-        s = ft_strchr(s, *p);
-        if (s == 0)
-            break;
-        else
-            p++;
-    }
-    return (p - str);
+	if ((c > 64 && c < 91) || (c > 96 && c < 123))
+		return (1);
+	return (0);
 }
