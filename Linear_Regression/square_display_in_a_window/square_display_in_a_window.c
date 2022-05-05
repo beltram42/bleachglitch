@@ -1,15 +1,21 @@
-#include "./minilibx-linux/mlx.h"
-# include <X11/keysym.h>
-# include <X11/X.h>
+
+
+#include "./mlx/mlx.h"
+#include <X11/keysym.h>
+#include <X11/X.h>
 #include <unistd.h>
 #include <stdio.h>
 
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
 
 int	ft_key(int key, void *id[2])
 {
 	int	x, y;
 
-	//ft_putchar('X'); // X print in shell window, to make sure the listener works
+	ft_putchar('X'); // X print in shell window, to make sure the listener works
 	y = 80;
 	while (y <= 280)
 	{
