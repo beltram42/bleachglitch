@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 19:09:50 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/08 21:12:55 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/08 21:29:41 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ static long	ft_ltobase(const char *s, long val[8])
 	return (val[RES]);
 }
 
-static long	ft_strtol(const char *str, char **endptr, int base)
+long	ft_strtol(const char *str, char **endptr, int base)
 {
 	const char	*s;
 	long		val[8];

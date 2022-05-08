@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/09 22:02:34 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/08 19:14:27 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/08 21:20:46 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	malloc_error(char **array, int len)
 	free(array);
 }
 
-static char	*ft_strtok_r(char *str, const char *sep, char ***saveptr)
+static char	*ft_strtok_rbis(char *str, const char *sep, char ***saveptr)
 {
 	char	*start;
 
@@ -52,12 +52,12 @@ static int	ft_wordmeter(char *str, const char *set, char **saveptr)
 	int		w;
 
 	w = 0;
-	token = ft_strtok_r(str, set, &saveptr);
+	token = ft_strtok_rbis(str, set, &saveptr);
 	if (token != NULL)
 		w++;
 	while (token)
 	{
-		token = ft_strtok_r(NULL, set, &saveptr);
+		token = ft_strtok_rbis(NULL, set, &saveptr);
 		if (!token)
 			break ;
 		w++;

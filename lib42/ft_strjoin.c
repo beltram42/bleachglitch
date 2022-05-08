@@ -6,21 +6,21 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/06 13:12:51 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/08 20:17:32 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/08 21:23:42 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib42.h"
 
-static char	*ft_malmove(char *dest, char *src, int len1, int len2)
+static char	*ft_malmove(const char *s1, const char *s2, int len1, int len2)
 {
 	char	*res;
 
 	res = malloc(sizeof(char) * (len1 + len2 + 1));
 	if (!res)
 		return (NULL);
-	ft_memmove((void *)(res), (void *)dest, len1);
-	ft_memmove((void *)(res + len1), (void *)(src), len2 + 1);
+	ft_memmove((void *)(res), (void *)s1, len1);
+	ft_memmove((void *)(res + len1), (void *)(s2), len2 + 1);
 	return (res);
 }
 
