@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   lib42.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 18:45:00 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/08 20:27:19 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/08 21:15:01 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef LIB42_H
+# define LIB42_H
 
 # include<stdlib.h>
 # include<unistd.h>
@@ -50,7 +50,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t	ft_strnlen(const char *s, size_t maxlen);
 char	*ft_strnstr(const char *str, const char *to_find, size_t n);
-char 	*ft_strpbrk(const char *str, const char *set);
+char	*ft_strpbrk(const char *str, const char *set);
 char	*ft_strrchr(const char *str, int c);
 int		ft_strspncspn(const char *str, const char *set, int gear);
 int		ft_strspnfb(const char *str, const char *set, int gear);
@@ -60,7 +60,6 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
-
 
 typedef struct s_list
 {

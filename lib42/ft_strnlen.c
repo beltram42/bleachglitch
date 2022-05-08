@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 23:08:48 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/08 20:22:44 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/08 21:01:13 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ size_t	ft_strnlen(const char *s, size_t maxlen)
 	while (s++, len < maxlen)
 	{
 		if (!*s)
-			break;
+			break ;
 		len++;
 	}
 	return (len);

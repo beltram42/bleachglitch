@@ -6,11 +6,11 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 17:59:40 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/08 20:25:40 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/08 20:59:43 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#inclide "lib42.h"
+#include "lib42.h"
 
 char	*ft_strtok_r(char *str, const char *sep, char **saveptr)
 {

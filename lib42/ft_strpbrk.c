@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 18:53:00 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/08 20:24:06 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/08 21:00:57 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 char	*ft_strpbrk(const char *str, const char *set)
 {
-	const char  *s;
+	const char	*s;
+
 	while (*str != '\0')
 	{
 		s = set;
 		while (*s != '\0')
 			if (*s++ == *str)
-				return (char *)str;
+				return ((char *)str);
 		++str;
 	}
-	return 0;
+	return (0);
 }
