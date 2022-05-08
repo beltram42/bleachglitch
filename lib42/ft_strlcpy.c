@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strpbrk.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/21 18:53:00 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/08 18:33:33 by alambert         ###   ########.fr       */
+/*   Created: 2021/11/24 18:30:14 by alambert          #+#    #+#             */
+/*   Updated: 2022/05/08 19:20:04 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char  *ft_strpbrk(const char *str, const char *set)
+#include "lib42.h"
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	const char  *s;
-	while (*str != '\0')
+	size_t	srclen;
+
+	srclen = ft_strlen(src);
+	if (srclen + 1 < dstsize)
+		ft_memcpy(dst, src, srclen + 1);
+	else if (dstsize != 0)
 	{
-		s = set;
-		while (*s != '\0')
-			if (*s++ == *str)
-				return (char *)str;
-		++str;
+		ft_memcpy(dst, src, dstsize - 1);
+		dst[dstsize - 1] = '\0';
 	}
-	return 0;
+	return (srclen);
 }

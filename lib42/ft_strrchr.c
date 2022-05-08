@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strpbrk.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/21 18:53:00 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/08 18:33:33 by alambert         ###   ########.fr       */
+/*   Created: 2021/12/04 22:24:01 by alambert          #+#    #+#             */
+/*   Updated: 2022/02/07 17:47:37 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char  *ft_strpbrk(const char *str, const char *set)
+#include "lib42.h"
+
+char	*ft_strrchr(const char *s, int c)
 {
-	const char  *s;
-	while (*str != '\0')
+	char	*end;
+	int		len;
+
+	len = ft_strlen(s);
+	end = (char *)s + len;
+	while (len-- >= 0)
 	{
-		s = set;
-		while (*s != '\0')
-			if (*s++ == *str)
-				return (char *)str;
-		++str;
+		if (*end == (char)c)
+			return ((char *)end);
+		if (len >= 0)
+			end--;
 	}
-	return 0;
+	return (NULL);
 }

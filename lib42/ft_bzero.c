@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strpbrk.c                                       :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/21 18:53:00 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/08 18:33:33 by alambert         ###   ########.fr       */
+/*   Created: 2021/11/25 20:15:08 by alambert          #+#    #+#             */
+/*   Updated: 2022/05/08 19:51:43 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char  *ft_strpbrk(const char *str, const char *set)
+#include "lib42.h"
+
+void	ft_bzero(void *s, size_t n)
 {
-	const char  *s;
-	while (*str != '\0')
+	size_t			i;
+	unsigned char	*str;
+
+	i = 0;
+	str = (unsigned char *)s;
+	if (n == 0)
+		return ;
+	while (i < n)
 	{
-		s = set;
-		while (*s != '\0')
-			if (*s++ == *str)
-				return (char *)str;
-		++str;
+		str[i] = 0;
+		i++;
 	}
-	return 0;
+	s = str;
 }

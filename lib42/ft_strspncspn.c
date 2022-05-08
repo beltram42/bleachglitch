@@ -1,25 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strpbrk.c                                       :+:      :+:    :+:   */
+/*   ft_strspncspn.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/21 18:53:00 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/08 18:33:33 by alambert         ###   ########.fr       */
+/*   Created: 2022/01/21 18:51:11 by alambert          #+#    #+#             */
+/*   Updated: 2022/05/08 20:18:56 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char  *ft_strpbrk(const char *str, const char *set)
+#include "lib42.h"
+
+int	ft_strspncspn(const char *str, const char *set, int gear)
 {
-	const char  *s;
-	while (*str != '\0')
+	const char	*p;
+	const char	*s;
+
+	p = str;
+	while (*p)
 	{
 		s = set;
-		while (*s != '\0')
-			if (*s++ == *str)
-				return (char *)str;
-		++str;
+		s = ft_strchr(s, *p);
+		if (s == 0 && gear == 1)
+			break ;
+		if (s != 0 && gear == -1)
+			break ;
+		else
+			p++;
 	}
-	return 0;
+	return (p - str);
 }
+
+/*
+	strspn : gear = 1
+	strcspn : gear = -1
+	strlen : set = ""
+*/

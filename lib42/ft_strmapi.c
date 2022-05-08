@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strpbrk.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/21 18:53:00 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/08 18:33:33 by alambert         ###   ########.fr       */
+/*   Created: 2021/12/09 13:00:46 by alambert          #+#    #+#             */
+/*   Updated: 2022/05/08 20:32:49 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char  *ft_strpbrk(const char *str, const char *set)
+#include "lib42.h"
+
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	const char  *s;
-	while (*str != '\0')
+	char	*dup;
+	char	*ptr;
+
+	if (!s || !f)
+		return (NULL);
+	dup = ft_strdup(s);
+	ptr = dup;
+	if (dup == NULL)
+		return (NULL);
+	while (*ptr)
 	{
-		s = set;
-		while (*s != '\0')
-			if (*s++ == *str)
-				return (char *)str;
-		++str;
+		*ptr = f(ptr - dup, *ptr);
+		ptr++;
 	}
-	return 0;
+	return (dup);
 }
