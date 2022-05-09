@@ -6,7 +6,7 @@
 #    By: alambert <alambert@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/05 11:54:36 by alambert          #+#    #+#              #
-#    Updated: 2022/05/08 17:08:55 by alambert         ###   ########.fr        #
+#    Updated: 2022/05/09 10:53:43 by alambert         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,21 +26,24 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	make re -C ./mlx
-	$(CC) $(CFLAGS) $(FL_MLX) $(OBJ) -o $(NAME) $(MLX)
+	make re -C ./lib42
+	$(CC) $(CFLAGS) $(FL_MLX) $(OBJ) -L./lib42  -o $(NAME) $(MLX)
 
 %.o: %.c
 	${CC} ${CFLAGS} -c $< -o $@
 
 clean:
 	$(MAKE) clean -C ./mlx
+	make clean -C ./lib42
 	$(RM) $(OBJ)
 
 fclean: clean
 	make fclean -C ./mlx
+	make fclean -C ./lib42
 	$(RM) $(NAME)
 
 leaks: $(NAME)
-	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./so_long map_set/xl_map.ber
+	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes
 
 re: fclean all
 
