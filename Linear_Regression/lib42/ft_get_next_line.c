@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_get_next_line.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 14:15:55 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/10 15:04:49 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/10 17:54:38 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,33 @@
 
 #define BUFFER_SIZE 128
 
-static char	*ft_strjoinfree(char *s1, char *s2)
+char	*ft_malmovebis(char *dest, char *src, int len1, int len2)
+{
+	char	*res;
+
+	res = malloc(sizeof(char) * (len1 + len2 + 1));
+	if (!res)
+		return (NULL);
+	ft_memmove((void *)(res), (void *)dest, len1);
+	ft_memmove((void *)(res + len1), (void *)(src), len2 + 1);
+	return (res);
+}
+
+char	*ft_strjoinfree(char *s1, char *s2)
 {
 	char	*res;
 	int		len1;
 	int		len2;
 
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
+	len2 = ft_strspncspn(s2, "", -1);
 	res = NULL;
-		res = malloc(sizeof(char) * (len1 + len2 + 1));
-	if (!res)
-		return (NULL);
-	ft_memmove((void *)(res), (void *)s1, len1);
-	ft_memmove((void *)(res + len1), (void *)(s2), len2 + 1);
+	len1 = ft_strspncspn(s1, "", -1);
+	res = ft_malmovebis(s1, s2, len1, len2);
 	free(s1);
 	return (res);
 }
 
-static char	*ft_lines(char *str, int len, int nlen, int gear)
+char	*ft_lines(char *str, int len, int nlen, int gear)
 {
 	char	*res;
 
@@ -61,7 +69,7 @@ static char	*ft_lines(char *str, int len, int nlen, int gear)
 	return (res);
 }
 
-static char	*ft_save(int fd, char *str)
+char	*ft_save(int fd, char *str)
 {
 	char	*save;
 	int		len;
@@ -87,7 +95,7 @@ static char	*ft_save(int fd, char *str)
 	return (str);
 }
 
-char	*get_next_line(int fd)
+char	*ft_get_next_line(int fd)
 {
 	static char	*buff;
 	char		*res;
@@ -99,7 +107,7 @@ char	*get_next_line(int fd)
 	buff = ft_save(fd, buff);
 	if (!buff)
 		return (NULL);
-	len = ft_strlen(buff);
+	len = ft_strspncspn(buff, "", -1);
 	nlen = ft_strspncspn(buff, "\n", -1);
 	res = ft_lines(buff, len, nlen, 1);
 	if (!res)
