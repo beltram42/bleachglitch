@@ -6,12 +6,13 @@
 #    By: alambert <alambert@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/05 11:54:36 by alambert          #+#    #+#              #
-#    Updated: 2022/05/09 10:53:43 by alambert         ###   ########.fr        #
+#    Updated: 2022/05/10 14:59:27 by alambert         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = display
 MLX = ./mlx/libmlx.a
+L42 = ./lib42/lib42.a
 CC = clang
 SRC = display.c
 
@@ -27,18 +28,18 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	make re -C ./mlx
 	make re -C ./lib42
-	$(CC) $(CFLAGS) $(FL_MLX) $(OBJ) -L./lib42  -o $(NAME) $(MLX)
+	$(CC) $(CFLAGS) $(FL_MLX) $(OBJ) -Llib42 $(L42) -o $(NAME) $(MLX)
 
 %.o: %.c
 	${CC} ${CFLAGS} -c $< -o $@
 
 clean:
 	$(MAKE) clean -C ./mlx
-	make clean -C ./lib42
+	$(MAKE) clean -C ./lib42
 	$(RM) $(OBJ)
 
 fclean: clean
-	make fclean -C ./mlx
+	make clean -C ./mlx
 	make fclean -C ./lib42
 	$(RM) $(NAME)
 

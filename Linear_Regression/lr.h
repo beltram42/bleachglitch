@@ -6,25 +6,27 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 11:04:32 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/09 11:34:20 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/10 14:03:32 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LR_H
 # define LR_H
 
-#include "./lib42.h"
-#include "./mlx.h"
+#include "./mlx/mlx.h"
+#include "./lib42/lib42.h"
+#include <X11/keysym.h>
+#include <X11/X.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include<limits.h>
+#include <limits.h>
 #include <ctype.h>
 #include <math.h>
 
-
+/*
 typedef enum e_long
 {
 	km,
@@ -47,7 +49,7 @@ typedef enum e_float
 	meam_price,
 
 }			t_float
-
+*/
 typedef struct s_tab
 {
 	int	km[24];
@@ -68,9 +70,8 @@ typedef struct s_tab
 	
 }       t_tab;
 
-char	*get_next_line(int fd);
-int	ft_atoi(const char *str);
-void	test(t_tab *tab);
+
+int	display(void);
 /*
 //double get_estimated_price(int mileage, double theta0, double theta1);
 //void get_estimated_price(int data, float theta0, float theta1);
