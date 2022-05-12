@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:26:54 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/10 15:30:41 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/12 15:06:42 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_landmark(void *id[2])
 		}
 	}
 }
-
+/*
 void	ft_dotstrace(void *id[2])
 {
 	int	f;
@@ -99,7 +99,7 @@ void	ft_dotstrace(void *id[2])
 	printf("sum_pdt : %ld\n", tab->sum_pdt);
 	printf("theta1 = %f\n", tab->theta1);
 	printf("theta0 = %f\n", tab->theta0);
-/*
+
 	i = tab->count;
 	while (i > 0)
 	{
@@ -109,8 +109,9 @@ void	ft_dotstrace(void *id[2])
 		mlx_pixel_put(id[0], id[1], tab->km[i], tab->price[i] - 1, 0x00FFCCD9);
 		mlx_pixel_put(id[0], id[1], tab->km[i], tab->price[i] + 1, 0x00FFCCD9);
 		i--;
-	}*/
+	}
 }
+*/
 
 int	main(void)
 {
@@ -124,7 +125,7 @@ int	main(void)
 	id[1] = mlx_new_window(id[0], 2600, 1100, "Linear_Regression_1"); // takes parameters: mlx_init ID, window width and height, window title
 	*/
 	ft_landmark(id);
-	ft_dotstrace(id);
+	//ft_dotstrace(id);
 	//mlx_key_hook(id[1], ft_key, id); // listener set, before to lauch the loop
 	mlx_loop(id[0]); // mandatory loop to keep window open
 }

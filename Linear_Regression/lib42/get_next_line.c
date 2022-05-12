@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 14:15:55 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/10 17:54:38 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/12 14:49:18 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ char	*ft_save(int fd, char *str)
 	return (str);
 }
 
-char	*ft_get_next_line(int fd)
+char	*get_next_line(int fd)
 {
 	static char	*buff;
 	char		*res;
