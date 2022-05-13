@@ -6,7 +6,7 @@
 #    By: alambert <alambert@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/24 18:46:28 by alambert          #+#    #+#              #
-#    Updated: 2022/05/12 14:49:05 by alambert         ###   ########.fr        #
+#    Updated: 2022/05/13 17:43:07 by alambert         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ FILES = ft_atoi.c \
 		ft_isalnum.c \
 		ft_isalpha.c \
 		ft_isascii.c \
+		ft_iscntrl \
 		ft_isdigit.c \
 		ft_islower.c \
 		ft_isprint.c \

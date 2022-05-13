@@ -6,11 +6,11 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 14:15:55 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/10 18:01:52 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/13 19:25:32 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib42.h"
+#include "get_next_line.h"
 
 #define BUFFER_SIZE 128
 
