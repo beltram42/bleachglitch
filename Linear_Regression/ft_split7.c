@@ -9,7 +9,8 @@
 /*   Updated: 2022/04/27 19:31:13 by lbenatta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "common.h"
+
+#include "lr.h"
 
 static int	ft_charset(char charset, char a)
 {

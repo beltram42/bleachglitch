@@ -6,7 +6,7 @@
 #    By: alambert <alambert@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/24 18:46:28 by alambert          #+#    #+#              #
-#    Updated: 2022/05/18 11:59:59 by alambert         ###   ########.fr        #
+#    Updated: 2022/05/23 13:54:35 by alambert         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ FILES = ft_atoi.c \
 		ft_lstmap.c \
 		ft_lstnew.c \
 		ft_lstsize.c \
+		ft_malgets.c \
 		ft_malmove.c \
 		ft_memchr.c \
 		ft_memcmp.c \
