@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:35:14 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/24 13:52:28 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/24 14:04:04 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int main(void) {
         return 0;
 }
 
-static int	**ft_wordmeter(char *str, const char *set)
+static int	ft_wordmeter(char *str, const char *set)
 {
 	char	*ptr;
 	int	w;
@@ -44,7 +44,7 @@ static int	**ft_wordmeter(char *str, const char *set)
 	return (w);
 }
 
-char	**ft_minisplit(char *str, char *sep1, char *sep2, int w)
+char	**ft_minisplit(char *str, int data[2][12], int w)
 {
 	char	*token1;
 	char	*token2;
@@ -58,21 +58,28 @@ char	**ft_minisplit(char *str, char *sep1, char *sep2, int w)
 
 }
 
-void	ft_readandsave(int fd)
+char	*ft_readandsave(int fd)
 {
 	char	*save;
+	
 
-
+	return (save);
 }
 
 int	main(void)
 {
 	int	fd;
+	int	w;
+	char	*str;
 	int	data[2][12];
 
 	data[0][0] = 0;
 	fd = open("data.csv", O_RDONLY);
+	str = ft_readandsave(fd);
+	clode(fd);
+	w = ft_wordmeter(str, ",\n");
 
 
 
+	
 }
