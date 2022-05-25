@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:35:14 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/25 17:06:48 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/25 19:06:12 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,7 +220,7 @@ int	ft_atoi(const char *str)
 
 /*---------------------------------------------------------------------*/
 
-void	ft_splitandconvert(char *str, long data[5][24])
+void	ft_splitandconvert(char *str, long ldata[6][24])
 {
 	char	*token;
 	char	*ptr;
@@ -235,22 +235,22 @@ void	ft_splitandconvert(char *str, long data[5][24])
 		token = ft_strtok_r(NULL, ",\n", &ptr);
 		if (!token)
 			break ;
-		data[0][i] = ft_strtol(token, (char **) NULL, 10);
+		ldata[0][i] = ft_strtol(token, (char **) NULL, 10);
 		token = ft_strtok_r(NULL, ",\n", &ptr);
 		if (!token)
 			break ;
-		data[1][i] = ft_strtol(token, (char **) NULL, 10);
+		ldata[1][i] = ft_strtol(token, (char **) NULL, 10);
 		i++;
 	}
 }
 
-void	ft_getdata(long data[5][24])
+void	ft_getdata(long ldata[6][24])
 {
 	int		fd;
 	char	*save;
 	int		len;
 
-	data[0][0] = 0;
+	ldata[0][0] = 0;
 	fd = open("data.csv", O_RDONLY);
 	save = malloc(sizeof(char) * (281 + 1));
 	if (!save)
@@ -258,7 +258,7 @@ void	ft_getdata(long data[5][24])
 	len = read(fd, save, 281);
 	save[len] = '\0';
 	close(fd);
-	ft_splitandconvert(save, data);
+	ft_splitandconvert(save, ldata);
 	save = ft_free(&save);
 }
 
@@ -296,7 +296,7 @@ void	ft_landmark(void *id[2])
 */
 
 /*
-void	ft_display(long data[5][24])
+void	ft_display(long ldata[5][24])
 {
 	void	*id[2];
 	int		x;
@@ -310,33 +310,19 @@ void	ft_display(long data[5][24])
 
 int	main(void)
 {
-	long	d[5][24];
+	long	ldb[6][24];
+	long	lvar[6];
+	float	fdb[2][24];
+	float	fvar[5];
 	int		i;
 
-	ft_getdata(d);
+	ft_getdata(ldb);
 	i = 0;
 	while (i < 24)
 	{
-		printf("d[0][%d] = %lu, d[1][%d] = %lu\n", i, d[0][i], i, d[1][i]);
+		printf("d[0][%d] = %lu, d[1][%d] = %lu\n", i, ldb[0][i], i, ldb[1][i]);
 		i++;
 	}
 	//ft_display(d)
 	return (0);
 }
-
-/*
-int	main(void)
-{
-	int	d[2][24];
-	int	i;
-
-	ft_getdata(d);
-	i = 0;
-	while (i < 24)
-	{
-		printf("d[0][%d] = %d, d[1][%d] = %d\n", i, d[0][i], i, d[1][i]);
-		i++;
-	}
-	return (0);
-}
-*/
