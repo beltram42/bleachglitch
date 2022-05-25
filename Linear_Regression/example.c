@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:27:25 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/08 16:59:03 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/25 16:27:56 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,25 +40,45 @@ int	ft_key(int key, void *id[2])
 	return 0;
 }
 
+void	ft_landmark(void *id[2])
+{
+	int		x;
+	int		y;
+	
+	x = 100;
+	y = 99
+	while (y++ <= 1000)
+		mlx_pixel_put(id[0], id[1], x, y, 0x0009ae51);
+	y =99;
+	while (y++ <= 1000)
+		if (y == (y / 100) *100)
+		{
+			mlx_pixel_put(id[0], id[1], x - 1, y, 0x0009ae51);
+			mlx_pixel_put(id[0], id[1], x + 1, y, 0x0009ae51);
+		}
+	x = 99, y = 1000;
+	while (x++ <= 2500)
+		mlx_pixel_put(id[0], id[1], x, y, 0x0009ae51);
+	x = 99;
+	while (x++ <= 2500)
+	{
+		if ((x - 100) == ((x - 100) / 200) * 200)
+		{
+			mlx_pixel_put(id[0], id[1], x, y - 1, 0x0009ae51);
+			mlx_pixel_put(id[0], id[1], x, y + 1, 0x0009ae51);
+		}
+	}
+}
+
 int	main(void)
 {
-	void	*id[2]; // ID pointers array, so we can pass them through mlx_key_hook parameters
+	void	*id[2];
 	int		x, y;
 
 	id[0] = mlx_init();
-	id[1] = mlx_new_window(id[0], 360, 640, "square room"); // takes parameters: mlx_init ID, window width and height, window title
-	y = 60;
-	while (y <= 300)
-	{
-		x = 60;
-		while (x <= 300)
-		{
-			mlx_pixel_put(id[0], id[1], x, y, 0x00ffffff); // function to light on a pixel in the window; parameters: init ID, window ID, cordinates, pixel colour 
-			x++;
-		}
-		y++;
-	}
-	mlx_key_hook(id[1], ft_key, id); // listener set, before to lauch the loop
+	id[1] = mlx_new_window(id[0], 360, 640, "square room");
+	ft_landmark(id);
+
 	mlx_loop(id[0]); // mandatory loop to keep window open
 }
 

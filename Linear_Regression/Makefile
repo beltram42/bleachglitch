@@ -6,15 +6,15 @@
 #    By: alambert <alambert@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/05 11:54:36 by alambert          #+#    #+#              #
-#    Updated: 2022/05/12 14:43:26 by alambert         ###   ########.fr        #
+#    Updated: 2022/05/25 16:36:43 by alambert         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = display
+NAME = lr
 MLX = ./mlx/libmlx.a
 L42 = ./lib42/lib42.a
 CC = clang
-SRC = display.c
+SRC = lr.c
 
 SEC = 20
 OBJ = $(SRC:.c=.o)

@@ -6,11 +6,11 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:35:14 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/25 15:41:18 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/25 17:06:48 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "lr.h"
+#include "lr.h"
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -220,7 +220,7 @@ int	ft_atoi(const char *str)
 
 /*---------------------------------------------------------------------*/
 
-void	ft_splitandconvert(char *str, int data[2][24])
+void	ft_splitandconvert(char *str, long data[5][24])
 {
 	char	*token;
 	char	*ptr;
@@ -235,16 +235,16 @@ void	ft_splitandconvert(char *str, int data[2][24])
 		token = ft_strtok_r(NULL, ",\n", &ptr);
 		if (!token)
 			break ;
-		data[0][i] = ft_atoi(token);
+		data[0][i] = ft_strtol(token, (char **) NULL, 10);
 		token = ft_strtok_r(NULL, ",\n", &ptr);
 		if (!token)
 			break ;
-		data[1][i] = ft_atoi(token);
+		data[1][i] = ft_strtol(token, (char **) NULL, 10);
 		i++;
-	};
+	}
 }
 
-void	ft_getdata(int data[2][24])
+void	ft_getdata(long data[5][24])
 {
 	int		fd;
 	char	*save;
@@ -262,21 +262,65 @@ void	ft_getdata(int data[2][24])
 	save = ft_free(&save);
 }
 
-void	ft_display(int )
+/*
+void	ft_landmark(void *id[2])
+{
+	int		x;
+	int		y;
+	
+	x = 100;
+	y = 99;
+	while (y++ <= 1000)
+		mlx_pixel_put(id[0], id[1], x, y, 0x0009ae51);
+	y = 99;
+	while (y++ <= 1000)
+		if (y == (y / 100) *100)
+		{
+			mlx_pixel_put(id[0], id[1], x - 1, y, 0x0009ae51);
+			mlx_pixel_put(id[0], id[1], x + 1, y, 0x0009ae51);
+		}
+	x = 99;
+	y = 1000;
+	while (x++ <= 2500)
+		mlx_pixel_put(id[0], id[1], x, y, 0x0009ae51);
+	x = 99;
+	while (x++ <= 2500)
+	{
+		if ((x - 100) == ((x - 100) / 200) * 200)
+		{
+			mlx_pixel_put(id[0], id[1], x, y - 1, 0x0009ae51);
+			mlx_pixel_put(id[0], id[1], x, y + 1, 0x0009ae51);
+		}
+	}
+}
+*/
+
+/*
+void	ft_display(long data[5][24])
+{
+	void	*id[2];
+	int		x;
+	int		y;
+
+	id[0] = mlx_init();
+	id[1] = mlx_new_window(id[0], 1200, 1100, "LR_display");
+	ft_landmark(id);
+}
+*/
 
 int	main(void)
 {
-	int	d[2][24];
-	int	i;
+	long	d[5][24];
+	int		i;
 
 	ft_getdata(d);
 	i = 0;
 	while (i < 24)
 	{
-		printf("d[0][%d] = %d, d[1][%d] = %d\n", i, d[0][i], i, d[1][i]);
+		printf("d[0][%d] = %lu, d[1][%d] = %lu\n", i, d[0][i], i, d[1][i]);
 		i++;
 	}
-	ft_display(d)
+	//ft_display(d)
 	return (0);
 }
 
