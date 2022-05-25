@@ -6,11 +6,16 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:35:14 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/24 21:44:10 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/25 15:41:18 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lr.h"
+//#include "lr.h"
+#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <limits.h>
+#include <fcntl.h>
 /*
 static int	ft_wordmeter(char *str, const char *set)
 {
@@ -28,7 +33,194 @@ static int	ft_wordmeter(char *str, const char *set)
 	return (w);
 }*/
 
-int	**ft_splitandconvert(char *str, int data[2][24])
+int	ft_isalpha(int c)
+{
+	if ((c > 64 && c < 91) || (c > 96 && c < 123))
+		return (1);
+	return (0);
+}
+
+int	ft_isdigit(int c)
+{
+	if (c >= 48 && c <= 57)
+		return (1);
+	return (0);
+}
+
+char	*ft_free(char **str)
+{
+	if (!*str)
+		return (NULL);
+	free(*str);
+	*str = NULL;
+	return (NULL);
+}
+
+char	*ft_strchr(const char *s, int c)
+{
+	while (*s != (char)c)
+	{
+		if (*s == 0)
+			return (0);
+		s++;
+	}
+	return ((char *)s);
+}
+
+char	*ft_strtok_r(char *str, const char *sep, char **saveptr)
+{
+	char	*start;
+
+	if (!str)
+		str = *saveptr;
+	while (*str && ft_strchr(sep, *str))
+		++str;
+	if (*str)
+	{
+		start = (char *)str;
+		*saveptr = start + 1;
+		while (**saveptr && !ft_strchr(sep, **saveptr))
+			++*saveptr;
+		if (**saveptr)
+		{
+			**saveptr = '\0';
+			++*saveptr;
+		}
+		return (start);
+	}
+	return (NULL);
+}
+
+typedef enum e_var
+{
+	SIGN,
+	BASE,
+	DGT,
+	ANY,
+	RES,
+	CUT,
+	MOD,
+	MOVE,
+	ENUM_MAX
+}			t_var;
+
+static long	ft_basecheck(const char *s, long base, long val[8])
+{
+	long	c;
+
+	c = val[DGT];
+	if (((base == 0 || base == 2) && c == 48 && (*s == 66 || *s == 98))
+		|| ((base == 0 || base == 16) && c == 48 && (*s == 88 || *s == 120)))
+	{
+		if ((base == 0 || base == 2) && c == 48 && (*s == 66 || *s == 98))
+			base = 2;
+		else
+			base = 16;
+	}
+	else if (base == 0)
+	{
+		base = 10;
+		if (c == 48)
+			base = 8;
+	}
+	return (base);
+}
+
+static long	*ft_cvbase(const char *s, long val[8])
+{
+	val[RES] = 0;
+	while (*s++)
+	{
+		val[MOVE] += 1;
+		if (ft_isalpha(val[DGT]) && val[DGT] > 96)
+			val[DGT] -= 87;
+		else if (ft_isalpha(val[DGT]) && val[DGT] < 91)
+			val[DGT] -= 55;
+		else if (ft_isdigit(val[DGT]))
+			val[DGT] -= 48;
+		else
+			break ;
+		if (val[DGT] >= val[BASE])
+			break ;
+		if (val[ANY] < 0 || ((unsigned long)val[RES] > (unsigned long)val[CUT])
+			|| (val[RES] == val[CUT] && val[DGT] > val[MOD]))
+			val[ANY] = -1;
+		else
+		{
+			val[ANY] = 1;
+			val[RES] = (val[RES] * val[BASE]) + val[DGT];
+		}
+		val[DGT] = *s;
+	}
+	return (val);
+}
+
+static long	ft_ltobase(const char *s, long val[8])
+{
+	val[MOVE] = 0;
+	val[ANY] = 0;
+	if (val[SIGN] == -1)
+		val[CUT] = -(unsigned long)LONG_MIN;
+	if (val[BASE] == 2 || val[BASE] == 16)
+	{
+		s += 2;
+		val[MOVE] = 2;
+	}
+	if (val[BASE] == 8)
+	{
+		s += 1;
+		val[MOVE] = 1;
+	}
+	val[DGT] = *s;
+	val = ft_cvbase(s, val);
+	if (val[ANY] < 0)
+	{
+		val[RES] = LONG_MAX;
+		if (val[SIGN] == -1)
+			val[RES] = LONG_MIN;
+	}
+	else if (val[SIGN] == -1)
+		val[RES] *= val[SIGN];
+	return (val[RES]);
+}
+
+long	ft_strtol(const char *str, char **endptr, int base)
+{
+	const char	*s;
+	long		val[8];
+
+	s = str;
+	val[SIGN] = 1;
+	while (*s == 9 || *s == 10 || *s == 11 || *s == 12 || *s == 13 || *s == 32)
+		s++;
+	val[DGT] = *s++;
+	if (!(ft_isdigit((int)val[DGT]) || ft_isalpha((int)val[DGT])
+			|| val[DGT] == 43 || val[DGT] == 45))
+		return (0);
+	if (val[DGT] == 43 || val[DGT] == 45)
+	{
+		if (val[DGT] == 45)
+			val[SIGN] = -1;
+		val[DGT] = *s++;
+	}
+	val[BASE] = ft_basecheck(s, base, val);
+	val[CUT] = LONG_MAX;
+	val[MOD] = val[CUT] % (unsigned long)val[BASE];
+	s--;
+	val[RES] = ft_ltobase(s, val);
+	if ((endptr != 0) && val[ANY] != 0)
+		*endptr = (char *)(s + val[MOVE] - 1);
+	return ((long)val[RES]);
+}
+
+int	ft_atoi(const char *str)
+{
+	return ((int )ft_strtol(str, (char **) NULL, 10));
+}
+
+/*---------------------------------------------------------------------*/
+
+void	ft_splitandconvert(char *str, int data[2][24])
 {
 	char	*token;
 	char	*ptr;
@@ -40,112 +232,67 @@ int	**ft_splitandconvert(char *str, int data[2][24])
 	i = 0;
 	while (i < 24)
 	{
-		token = strtok_r(NULL, ",\n", &ptr);
+		token = ft_strtok_r(NULL, ",\n", &ptr);
 		if (!token)
 			break ;
 		data[0][i] = ft_atoi(token);
-		token = strtok_r(NULL, ",\n", &ptr);
+		token = ft_strtok_r(NULL, ",\n", &ptr);
 		if (!token)
 			break ;
 		data[1][i] = ft_atoi(token);
 		i++;
-	}
-	return (data);
+	};
 }
 
-int	**ft_getdata(void)
+void	ft_getdata(int data[2][24])
 {
 	int		fd;
 	char	*save;
-	int		data[2][24];
 	int		len;
 
 	data[0][0] = 0;
 	fd = open("data.csv", O_RDONLY);
 	save = malloc(sizeof(char) * (281 + 1));
 	if (!save)
-		return (NULL);
+		return ;
 	len = read(fd, save, 281);
 	save[len] = '\0';
 	close(fd);
-	data = ft_splitandconvert(save, data);
+	ft_splitandconvert(save, data);
 	save = ft_free(&save);
-	return (data);
+}
+
+void	ft_display(int )
+
+int	main(void)
+{
+	int	d[2][24];
+	int	i;
+
+	ft_getdata(d);
+	i = 0;
+	while (i < 24)
+	{
+		printf("d[0][%d] = %d, d[1][%d] = %d\n", i, d[0][i], i, d[1][i]);
+		i++;
+	}
+	ft_display(d)
+	return (0);
 }
 
 /*
-v2
-int	**ft_minisplit(char *str, int data[2][24])
+int	main(void)
 {
-	char	*token;
-	char	*ptr1;
-	char	*ptr2;
-	int		i;
-	int		j;
+	int	d[2][24];
+	int	i;
 
-	ptr1 = NULL;
-	token = ft_strtok_r(str, ",", &ptr1);
-	ptr2 = ptr1 + 1;
-	token = ft_strtok_r(str, ",", &ptr2);
-	ptr1 = ptr2 + 1;
-	i = -1;
-	j = -1;
-	while (token && i++ < 24)
-	{
-		token = strtok_r(NULL, ",", &ptr1);
-		data[0][i] = ft_atoi(token);
-		while (token && j++ < 24)
-		{
-		token = strtok_r(NULL, "", &ptr2);
-		data[1][j] = ft_atoi(token);
-		}
-	}
-	return (data);
-}
-
-v1
-char	**ft_minisplit(char *str, int data[2][12], int w)
-{
-	char	*token;
-	char	*ptr1;
-	char	*ptr2;
-	int		i;
-	int		j;
-
-	ptr1 = NULL;
-	token = ft_strtok_r(str, ",", &ptr1);
-	ptr2 = ptr1 + 1;
-	token = ft_strtok_r(str, ",", &ptr2);
-	ptr1 = ptr2 + 1;
+	ft_getdata(d);
 	i = 0;
-	j = 0;
-	while (token)
+	while (i < 24)
 	{
-		token = strtok_r(NULL, ",", &ptr1);
-		data[0][i] = ft_atoi(token);
-		ptr2 = ptr1 + 1;
-		token = ft_strtok_r(NULL, "\n", &ptr2);
-		data[1][j] = ft_atoi(token);
-		ptr1 = ptr2 + 1;
+		printf("d[0][%d] = %d, d[1][%d] = %d\n", i, d[0][i], i, d[1][i]);
 		i++;
-		j++;
 	}
-	return (data);
-}
-
-int main(void)
-{
-        char str[] = "y.o.u,a.r.e,h.e.r.e";
-        const char *p =",", *q = ".";
-        char *a, *b, *c, *d;
-
-        for(a = strtok_r(str, p, &c) ; a != NULL ; a = strtok_r(NULL, p, &c))
-		{
-                printf("%s\n",a);
-
-                for( b=strtok_r(a,q,&d) ; b!=NULL ; b=strtok_r(NULL,q,&d) )
-                        printf("%s\n",b);
-        }
-        return 0;
+	return (0);
 }
 */
