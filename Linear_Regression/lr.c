@@ -6,16 +6,17 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:35:14 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/25 19:06:12 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/28 19:22:53 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lr.h"
+//#include "lr.h"
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <limits.h>
 #include <fcntl.h>
+#include <sys/stat.h>
 /*
 static int	ft_wordmeter(char *str, const char *set)
 {
@@ -249,13 +250,19 @@ void	ft_getdata(long ldata[6][24])
 	int		fd;
 	char	*save;
 	int		len;
-
+	struct stat sb;
+	
+	if (stat("data.csv", &sb) == -1)
+		return ;
+	len = sb.st_size;
 	ldata[0][0] = 0;
 	fd = open("data.csv", O_RDONLY);
-	save = malloc(sizeof(char) * (281 + 1));
+	if (fd == -1)
+		return ;
+	save = malloc(sizeof(char) * (len + 1));
 	if (!save)
 		return ;
-	len = read(fd, save, 281);
+	len = read(fd, save, len);
 	save[len] = '\0';
 	close(fd);
 	ft_splitandconvert(save, ldata);
@@ -307,6 +314,11 @@ void	ft_display(long ldata[5][24])
 	ft_landmark(id);
 }
 */
+
+enum ldb { km, price, sqkm, sqprice, sqxmgap, sqymgap};
+enum lvar { kmsum, pricesum, counter, sqkmsum, sqpricesum, prodsum};
+enum fdb { k, p};
+enum fvar { meank, meanp, t0, t1, r};
 
 int	main(void)
 {

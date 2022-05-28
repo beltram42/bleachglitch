@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alambert <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 14:25:35 by alambert          #+#    #+#             */
-/*   Updated: 2022/03/14 18:12:53 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/09 16:11:02 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,18 +67,6 @@ void	*ft_memmove(void *dest, void *src, int n)
 	return (dest);
 }
 
-char	*ft_malmove(char *dest, char *src, int len1, int len2)
-{
-	char	*res;
-
-	res = malloc(sizeof(char) * (len1 + len2 + 1));
-	if (!res)
-		return (NULL);
-	ft_memmove((void *)(res), (void *)dest, len1);
-	ft_memmove((void *)(res + len1), (void *)(src), len2 + 1);
-	return (res);
-}
-
 char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*res;
@@ -88,7 +76,11 @@ char	*ft_strjoin(char *s1, char *s2)
 	len2 = ft_span(s2, "", -1);
 	res = NULL;
 	len1 = ft_span(s1, "", -1);
-	res = ft_malmove(s1, s2, len1, len2);
+	res = malloc(sizeof(char) * (len1 + len2 + 1));
+	if (!res)
+		return (NULL);
+	ft_memmove((void *)(res), (void *)s1, len1);
+	ft_memmove((void *)(res + len1), (void *)(s2), len2 + 1);
 	free(s1);
 	return (res);
 }
