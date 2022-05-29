@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 18:09:09 by anthonylamb       #+#    #+#             */
-/*   Updated: 2022/05/29 20:36:42 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/29 21:23:30 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	ft_regr(float fdb[2][24], float fv[5], long lv[19], long ldb[7][24])
 	while (j < lv[iteration_cut])
 	{
 		ft_grad_dsc(fdb, fv, lv, lv);
-		ldb[cost0] = lv[cost1];
+		lv[cost0] = lv[cost1];
 	}
 }
 
