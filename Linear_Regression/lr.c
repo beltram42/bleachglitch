@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:35:14 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/29 19:22:03 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/29 19:51:52 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -373,6 +373,7 @@ int	main(void)
 	ft_bzero(fdb, sizeof(float) * 2 * 24);
 	ft_bzero(fv, sizeof(float) * 5);
 	ft_getdata(ldb);
+	ft_dataset(fdb, fv, ldb, lv);
 	lv[i] = 0;
 	while (lv[i] < 24)
 	{

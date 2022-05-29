@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 18:18:37 by anthonylamb       #+#    #+#             */
-/*   Updated: 2022/05/29 19:21:59 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/29 19:55:50 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_getdata(long ldb[8][24])
 	char	*save;
 	int		len;
 	struct stat sb;
-	
+
 	if (stat("data.csv", &sb) == -1)
 		return ;
 	len = sb.st_size;
@@ -77,17 +77,17 @@ void	ft_scantol(long lv[18])
 	free(str);
 }
 
-void	ft_dataset(float fdb[2][24], float[5], long ldb[8][24], long lv[18])
+void	ft_dataset(float fdb[2][24], float fv[5], long ldb[8][24], long lv[18])
 {
 	int	j;
-	
+
 	j = 0;
-	while (j < lv[i])
+	while (j < 24)
 	{
 		lv[sumkm] += ldb[km][j];
-		fv[meank] = (float)(ldb[sumkm] / lv[i]);
+		fv[meank] = (float)(ldb[sumkm] / 24);
 		lv[sumprice] += ldb[price][j];
-		fv[meanp] = (float)(ldb[sumprice] / lv[i]);
+		fv[meanp] = (float)(ldb[sumprice] / 24);
 		ldb[sqkm][j] = ldb[km][j] * ldb[km][j];
 		ldb[sqprice][j] = ldb[price][j] * ldb[price][j];
 		lv[sumsqkm] += ldb[sqkm][j];
@@ -97,4 +97,7 @@ void	ft_dataset(float fdb[2][24], float[5], long ldb[8][24], long lv[18])
 		fdb[k][j] = (float)ldb[km][j] / 10000.0;
 		fdb[p][j] = (float)ldb[price][j] / 10000.0;
 	}
+	lv[t1] = (long)(((fv[meank] * lv[sumprice]) - lv[sumprod])
+			/ ((fv[meank] * lv[sumkm]) - lv[sumsqkm]));
+	lv[t0] = (long)(fv[meanp] - (lv[t1] * fv[meank]));
 }
