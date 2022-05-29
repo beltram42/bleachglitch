@@ -6,13 +6,13 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 18:18:37 by anthonylamb       #+#    #+#             */
-/*   Updated: 2022/05/29 19:55:50 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/29 20:18:21 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <lr.h>
 
-void	ft_splitandconvert(char *str, long ldb[8][24])
+void	ft_splitandconvert(char *str, long ldb[7][24])
 {
 	char	*token;
 	char	*ptr;
@@ -36,7 +36,7 @@ void	ft_splitandconvert(char *str, long ldb[8][24])
 	}
 }
 
-void	ft_getdata(long ldb[8][24])
+void	ft_getdata(long ldb[7][24])
 {
 	int		fd;
 	char	*save;
@@ -59,7 +59,7 @@ void	ft_getdata(long ldb[8][24])
 	save = ft_free(&save);
 }
 
-void	ft_scantol(long lv[18])
+void	ft_scantol(long lv[19])
 {
 	char	*str;
 	char	*endptr;
@@ -77,7 +77,7 @@ void	ft_scantol(long lv[18])
 	free(str);
 }
 
-void	ft_dataset(float fdb[2][24], float fv[5], long ldb[8][24], long lv[18])
+void	ft_dataset(float fdb[2][24], float fv[5], long ldb[7][24], long lv[19])
 {
 	int	j;
 
@@ -100,4 +100,7 @@ void	ft_dataset(float fdb[2][24], float fv[5], long ldb[8][24], long lv[18])
 	lv[t1] = (long)(((fv[meank] * lv[sumprice]) - lv[sumprod])
 			/ ((fv[meank] * lv[sumkm]) - lv[sumsqkm]));
 	lv[t0] = (long)(fv[meanp] - (lv[t1] * fv[meank]));
+	fv[learning_rate] = 0.0001;
+	lv[iteration_cut] = 27500;
+	lv[num_data] = 24;
 }

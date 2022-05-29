@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:35:14 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/29 19:51:52 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/29 20:37:21 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -317,10 +317,8 @@ void	ft_display(long ldata[5][24])
 
 enum	e_ldb
 {
-	cost0,
 	km,
 	price,
-	prod,
 	sqkm,
 	sqprice,
 	sqxmgap,
@@ -338,6 +336,7 @@ enum	e_lvar
 	sumsqprice,
 	userkm,
 	userprice
+	cost0,
 	cost1,
 	final_b,
 	dtempt0,
@@ -363,17 +362,21 @@ enum	e_fvar
 
 int	main(void)
 {
-	long		ldb[8][24];
-	long		lv[18];
+	long		ldb[7][24];
+	long		lv[19];
 	float		fdb[2][24];
 	float		fv[5];
 
 	ft_bzero(ldb, sizeof(long) * 7 * 24);
-	ft_bzero(lv, sizeof(long) * 18);
+	ft_bzero(lv, sizeof(long) * 19);
 	ft_bzero(fdb, sizeof(float) * 2 * 24);
 	ft_bzero(fv, sizeof(float) * 5);
 	ft_getdata(ldb);
 	ft_dataset(fdb, fv, ldb, lv);
+	ft_regr(fdb, fv, lv, ldb);
+	lv[final_b] =  lv[tt1] * 10000;
+	fv[k_predict] = 10.0;
+	ft_predict(fdb, lv);
 	lv[i] = 0;
 	while (lv[i] < 24)
 	{
