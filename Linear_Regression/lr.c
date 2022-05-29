@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:35:14 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/28 19:22:53 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/29 19:22:03 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -315,25 +315,69 @@ void	ft_display(long ldata[5][24])
 }
 */
 
-enum ldb { km, price, sqkm, sqprice, sqxmgap, sqymgap};
-enum lvar { kmsum, pricesum, counter, sqkmsum, sqpricesum, prodsum};
-enum fdb { k, p};
-enum fvar { meank, meanp, t0, t1, r};
+enum	e_ldb
+{
+	cost0,
+	km,
+	price,
+	prod,
+	sqkm,
+	sqprice,
+	sqxmgap,
+	sqymgap
+};
+enum	e_lvar
+{
+	i,
+	iteration_cut,
+	num_data,
+	sumkm,
+	sumprice,
+	sumprod,
+	sumsqkm,
+	sumsqprice,
+	userkm,
+	userprice
+	cost1,
+	final_b,
+	dtempt0,
+	dtempt1,
+	t0,
+	t1,
+	tempt0,
+	tempt1
+};
+enum	e_fdb
+{
+	k,
+	p
+};
+enum	e_fvar
+{
+	k_predict,
+	learning_rate,
+	meank,
+	meanp,
+	r
+};
 
 int	main(void)
 {
-	long	ldb[6][24];
-	long	lvar[6];
-	float	fdb[2][24];
-	float	fvar[5];
-	int		i;
+	long		ldb[8][24];
+	long		lv[18];
+	float		fdb[2][24];
+	float		fv[5];
 
+	ft_bzero(ldb, sizeof(long) * 7 * 24);
+	ft_bzero(lv, sizeof(long) * 18);
+	ft_bzero(fdb, sizeof(float) * 2 * 24);
+	ft_bzero(fv, sizeof(float) * 5);
 	ft_getdata(ldb);
-	i = 0;
-	while (i < 24)
+	lv[i] = 0;
+	while (lv[i] < 24)
 	{
-		printf("d[0][%d] = %lu, d[1][%d] = %lu\n", i, ldb[0][i], i, ldb[1][i]);
-		i++;
+		printf("d[0][%d] = %lu, d[1][%d] = %lu\n", i, ldb[km][lv[i]], i, ldb[price][lv[i]]);
+		lv[i] += 1;
 	}
 	//ft_display(d)
 	return (0);
