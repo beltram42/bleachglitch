@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_next_line.c                                 :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/24 14:15:55 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/12 14:49:18 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/30 11:18:15 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #define BUFFER_SIZE 128
 
-char	*ft_malmovebis(char *dest, char *src, int len1, int len2)
+static char	*ft_malmovebis(char *dest, char *src, int len1, int len2)
 {
 	char	*res;
 
@@ -26,7 +26,7 @@ char	*ft_malmovebis(char *dest, char *src, int len1, int len2)
 	return (res);
 }
 
-char	*ft_strjoinfree(char *s1, char *s2)
+static char	*ft_strjoinfree(char *s1, char *s2)
 {
 	char	*res;
 	int		len1;
@@ -40,7 +40,7 @@ char	*ft_strjoinfree(char *s1, char *s2)
 	return (res);
 }
 
-char	*ft_lines(char *str, int len, int nlen, int gear)
+static char	*ft_lines(char *str, int len, int nlen, int gear)
 {
 	char	*res;
 
@@ -69,7 +69,7 @@ char	*ft_lines(char *str, int len, int nlen, int gear)
 	return (res);
 }
 
-char	*ft_save(int fd, char *str)
+static char	*ft_save(int fd, char *str)
 {
 	char	*save;
 	int		len;

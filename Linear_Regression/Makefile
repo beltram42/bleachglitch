@@ -6,15 +6,19 @@
 #    By: alambert <alambert@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/05 11:54:36 by alambert          #+#    #+#              #
-#    Updated: 2022/05/25 16:36:43 by alambert         ###   ########.fr        #
+#    Updated: 2022/05/30 11:51:19 by alambert         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = lr
+NAME = lr.a
 MLX = ./mlx/libmlx.a
 L42 = ./lib42/lib42.a
 CC = clang
-SRC = lr.c
+
+SRC =	lr.c \
+		./src/data_utils.c \
+		./src/display_utils.c \
+		./src/regression_utils.c \
 
 SEC = 20
 OBJ = $(SRC:.c=.o)

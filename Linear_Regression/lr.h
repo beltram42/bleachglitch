@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 11:04:32 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/29 21:04:55 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/30 11:49:58 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "./mlx/mlx.h"
 # include "./lib42/lib42.h"
+# include "./myenums.h"
 # include <X11/keysym.h>
 # include <X11/X.h>
 # include <unistd.h>
@@ -27,52 +28,15 @@
 # include <math.h>
 # include <sys/stat.h>
 
-enum	e_ldb
-{
-	km,
-	price,
-	sqkm,
-	sqprice,
-	sqxmgap,
-	sqymgap
-};
-enum	e_lvar
-{
-	i,
-	iteration_cut,
-	num_data,
-	sumkm,
-	sumprice,
-	sumprod,
-	sumsqkm,
-	sumsqprice,
-	userkm,
-	userprice,
-	cost0,
-	cost1,
-	final_b,
-	dtempt0,
-	dtempt1,
-	t0,
-	t1,
-	tempt0,
-	tempt1
-};
-enum	e_fdb
-{
-	k,
-	p
-};
-enum	e_fvar
-{
-	k_predict,
-	learning_rate,
-	meank,
-	meanp,
-	r
-};
 
-
-int	display(void);
+void	ft_splitandconvert(char *str, long ldb[7][24]);
+void	ft_getdata(long ldb[7][24]);
+void	ft_setzero(float fdb[2][24], float fv[5], long ldb[7][24], long lv[19]);
+void	ft_dataset(float fdb[2][24], float fv[5], long ldb[7][24], long lv[19]);
+void	ft_userprice(long lv[19]);
+void	ft_grad_dsc(float fdb[2], float fv[5], long lv[19]);
+void	ft_regr(float fdb[2][24], float fv[5], long lv[19], long ldb[7][24]);
+void	ft_predict(float fdb[2], long lv[18]);
+void	ft_landmark(void *id[2]);
 
 #endif

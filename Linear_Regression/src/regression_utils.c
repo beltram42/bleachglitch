@@ -6,56 +6,13 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 18:09:09 by anthonylamb       #+#    #+#             */
-/*   Updated: 2022/05/29 21:23:30 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/30 14:14:59 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-enum	e_ldb
-{
-	km,
-	price,
-	sqkm,
-	sqprice,
-	sqxmgap,
-	sqymgap
-};
-enum	e_lvar
-{
-	i,
-	iteration_cut,
-	num_data,
-	sumkm,
-	sumprice,
-	sumprod,
-	sumsqkm,
-	sumsqprice,
-	userkm,
-	userprice
-	cost0,
-	cost1,
-	final_b,
-	dtempt0,
-	dtempt1,
-	t0,
-	t1,
-	tempt0,
-	tempt1
-};
-enum	e_fdb
-{
-	k,
-	p
-};
-enum	e_fvar
-{
-	k_predict,
-	learning_rate,
-	meank,
-	meanp,
-	r
-};
+#include "lr.h"
 
-void	ft_grad_dsc(float fdb[2], float fv[5], long lv[19])
+void	ft_grad_dsc(float fdb[2][24], float fv[5], long lv[19])
 {
 	int	i;
 
@@ -78,7 +35,7 @@ void	ft_grad_dsc(float fdb[2], float fv[5], long lv[19])
 	lv[tt1] = lv[tt1] - (long)(fv[learning_rate] * lv[dtt1]);
 }
 
-void	ft_regr(float fdb[2][24], float fv[5], long lv[19], long ldb[7][24])
+void	ft_regr(float fdb[2][24], float fv[5], long lv[19], long ldb[6][24])
 {
 	//static long double *cost; // ??
 	int	j;
@@ -92,10 +49,11 @@ void	ft_regr(float fdb[2][24], float fv[5], long lv[19], long ldb[7][24])
 	{
 		ft_grad_dsc(fdb, fv, lv, lv);
 		lv[cost0] = lv[cost1];
+		j++;
 	}
 }
 
-void	ft_predict(float fdb[2], long lv[18])
+void	ft_predict(float fdb[2][24], long lv[19])
 {
 	fdb[p][0] = (lv[tt0] * fdb[k] + lv[tt1]) * 10000;
 }
