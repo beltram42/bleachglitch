@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 11:29:34 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/30 11:42:24 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/31 17:50:25 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ typedef enum e_lvar
 	dtempt1,
 	t0,
 	t1,
-	tempt0,
-	tempt1
+	tt0,
+	tt1
 }		t_lvar;
 
 typedef enum e_fdb
@@ -60,3 +60,4 @@ typedef enum e_fvar
 	meanp,
 	r
 }		t_fvar;
+#endif

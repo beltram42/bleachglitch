@@ -6,7 +6,7 @@
 #    By: alambert <alambert@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/05 11:54:36 by alambert          #+#    #+#              #
-#    Updated: 2022/05/30 11:51:19 by alambert         ###   ########.fr        #
+#    Updated: 2022/05/31 17:47:17 by alambert         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ CC = clang
 SRC =	lr.c \
 		./src/data_utils.c \
 		./src/display_utils.c \
+		./src/display.c \
 		./src/regression_utils.c \
+		./src/user_utils.c \
 
 SEC = 20
 OBJ = $(SRC:.c=.o)

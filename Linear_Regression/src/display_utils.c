@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 20:59:44 by anthonylamb       #+#    #+#             */
-/*   Updated: 2022/05/31 15:08:19 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/31 17:38:15 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ enum e_imax
 	y,
 };
 
-static void	ft_originfix(int iv[4])
+void	ft_originfix(int iv[4])
 {
 	iv[x1] = iv[x0] + 100;
 	iv[y1] = 1000 - iv[y0];

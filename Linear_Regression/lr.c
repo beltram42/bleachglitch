@@ -6,12 +6,26 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:35:14 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/31 17:26:18 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/31 17:55:10 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lr.h"
 #include "myenums.h"
+
+int	ft_exit(void *id[2])
+{
+	int	temp;
+
+	temp = mlx_clear_window(id[0], id[1]);
+	temp = mlx_destroy_window(id[0], id[1]);
+	temp = mlx_destroy_display(id[0]);
+	free(id[0]);
+	free(id[1]);
+	free(id);
+	exit(EXIT_SUCCESS);
+	return (0);
+}
 
 int	main(void)
 {
