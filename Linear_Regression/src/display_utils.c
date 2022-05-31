@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 20:59:44 by anthonylamb       #+#    #+#             */
-/*   Updated: 2022/05/31 10:59:43 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/31 15:08:19 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,19 @@ enum e_ivar
 	y1
 };
 
-void	ft_originfix(int iv[4])
+enum e_imax
+{
+	x,
+	y,
+};
+
+static void	ft_originfix(int iv[4])
 {
 	iv[x1] = iv[x0] + 100;
 	iv[y1] = 1000 - iv[y0];
 }
 
-void	ft_landmark(void *id[2], int iv[4])
+void	ft_tr_landmark(void *id[2], int iv[4])
 {
 	ft_bzero(iv, sizeof(int) * 4);
 	while (iv[y0] <= 900)
@@ -54,7 +60,7 @@ void	ft_landmark(void *id[2], int iv[4])
 	}
 }
 
-void	ft_trdots(void *id[2], long ldb[6][24], long lv[19], int iv[4])
+void	ft_tr_dots(void *id[2], long ldb[6][24], long lv[19], int iv[4])
 {
 	int	j;
 	int	d;
@@ -76,7 +82,7 @@ void	ft_trdots(void *id[2], long ldb[6][24], long lv[19], int iv[4])
 	}
 }
 
-void	ft_trline(int iv[4], long lv[19])
+void	ft_tr_line(void *id[2], int iv[4], long lv[19])
 {
 	ft_bzero(iv, sizeof(int) * 4);
 	while (iv[y0] >= 0)
@@ -88,6 +94,29 @@ void	ft_trline(int iv[4], long lv[19])
 	}
 }
 
-void	ft_spotuserparam(int iv[4], long lv[19])
+void	ft_tr_userparam(void *id[2], int iv[4], long lv[19], int max[2])
 {
+	iv[x0] = lv[userkm];
+	iv[y0] = lv[userprice];
+	ft_originfix(iv);
+	max[x] = iv[x1];
+	max[y] = iv[y1];
+	ft_bzero(iv, sizeof(int) * 4);
+	ft_originfix(iv);
+	while (iv[x1] <= max[x] && iv[y1] <= max[y])
+	{
+		ft_originfix(iv);
+		while (iv[x1] <= max[x])
+		{
+			if ((iv[x1] % 2) == 1)
+				mlx_pixel_put(id[0], id[1], iv[x1], max[y], 0x0009ae51);
+			iv[x0] += 1;
+		}
+		while (iv[y1] <= y)
+		{
+			if ((y % 2) == 1)
+				mlx_pixel_put(id[0], id[1], max[x], iv[y1], 0x0009ae51);
+			iv[y0] += 1;
+		}
+	}
 }
