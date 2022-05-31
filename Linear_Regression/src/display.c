@@ -6,12 +6,25 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 19:34:35 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/31 17:47:43 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/31 18:43:43 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lr.h"
 #include "myenums.h"
+
+enum e_ivar
+{
+	x0,
+	y0,
+	x1,
+	y1
+};
+enum e_imax
+{
+	x,
+	y,
+};
 
 void	ft_display0(void *id[2], long ldb[6][24], long lv[19])
 {
@@ -41,5 +54,5 @@ void	ft_display1(void *id[2], long ldb[6][24], long lv[19])
 	ft_bzero(iv, sizeof(int) * 4);
 	ft_tr_userparam(id, iv, lv, max);
 	mlx_string_put(id[0], id[1], max[x], iv[y1], 0x0009ae51, s1);
-	s1 = ft)free(s1);
+	s1 = ft_free(s1);
 }

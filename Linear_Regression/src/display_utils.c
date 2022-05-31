@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 20:59:44 by anthonylamb       #+#    #+#             */
-/*   Updated: 2022/05/31 17:38:15 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/31 18:44:02 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_tr_landmark(void *id[2], int iv[4])
 	while (iv[y0] <= 900)
 	{
 		ft_originfix(iv);
-		mlx_pixel_put(id[0], id[1], iv[x1], ix[y1], 0x0009ae51);
+		mlx_pixel_put(id[0], id[1], iv[x1], iv[y1], 0x0009ae51);
 		if (iv[y0] >= 0 && iv[y1] == (iv[y1] / 100) * 100)
 		{
 			mlx_pixel_put(id[0], id[1], iv[x1] - 1, iv[y1], 0x0009ae51);
