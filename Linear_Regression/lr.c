@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:35:14 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/30 19:58:45 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/31 11:23:44 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,12 @@ int	main(void)
 	fv[k_predict] = 10.0;
 	ft_predict(fdb, lv);
 	id[0] = mlx_init();
-	id[1] = mlx_new_window(id[0], 1200, 1100, "LR_display");
+	id[1] = mlx_new_window(id[0], 1200, 1100, "LR_chart");
 	ft_display0(id, ldb, lv);
 	ft_userprice(long lv[19]);
 	ft_display1(id, ldb, lv);
+	mlx_key_hook(id[1], ft_key, id);
 	mlx_loop(id[0]);
+	ft_exit();
 	return (0);
 }

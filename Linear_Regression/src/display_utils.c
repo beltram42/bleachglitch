@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 20:59:44 by anthonylamb       #+#    #+#             */
-/*   Updated: 2022/05/30 19:52:57 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/31 10:59:43 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_landmark(void *id[2], int iv[4])
 	{
 		ft_originfix(iv);
 		mlx_pixel_put(id[0], id[1], iv[x1], ix[y1], 0x0009ae51);
-		if (iv[y1] >= 0 && iv[y1] == (iv[y1] / 100) * 100)
+		if (iv[y0] >= 0 && iv[y1] == (iv[y1] / 100) * 100)
 		{
 			mlx_pixel_put(id[0], id[1], iv[x1] - 1, iv[y1], 0x0009ae51);
 			mlx_pixel_put(id[0], id[1], iv[x1] + 1, iv[y1], 0x0009ae51);
@@ -45,7 +45,7 @@ void	ft_landmark(void *id[2], int iv[4])
 	{
 		ft_originfix(iv);
 		mlx_pixel_put(id[0], id[1], iv[x1], iv[y1], 0x0009ae51);
-		if (iv[x1] >= 0 && iv[x1] == (iv[x1] / 100) * 100)
+		if (iv[x0] >= 0 && iv[x1] == (iv[x1] / 100) * 100)
 		{
 			mlx_pixel_put(id[0], id[1], iv[x1], iv[y1] - 1, 0x0009ae51);
 			mlx_pixel_put(id[0], id[1], iv[x1], iv[y1] + 1, 0x0009ae51);
@@ -54,20 +54,7 @@ void	ft_landmark(void *id[2], int iv[4])
 	}
 }
 
-void	ft_trline(int iv[4], long lv[19])
-{
-	iv[x0] = 0;
-	j = 0;
-	while (iv[y1] >= 0)
-	{
-		iv[y0] = (int)(lv[t0] + (lv[t1] * iv[x0]));
-		ft_originfix(iv);
-		mlx_pixel_put(id[0], id[1], iv[x1], iv[y1], 0x0009ae51);
-		iv[x0] += 1;
-	}
-}
-
-void	ft_dots(void *id[2], long ldb[6][24], long lv[19], int iv[4])
+void	ft_trdots(void *id[2], long ldb[6][24], long lv[19], int iv[4])
 {
 	int	j;
 	int	d;
@@ -86,6 +73,18 @@ void	ft_dots(void *id[2], long ldb[6][24], long lv[19], int iv[4])
 			d++;
 		}
 		j++;
+	}
+}
+
+void	ft_trline(int iv[4], long lv[19])
+{
+	ft_bzero(iv, sizeof(int) * 4);
+	while (iv[y0] >= 0)
+	{
+		iv[y0] = (int)(lv[t0] + (lv[t1] * iv[x0]));
+		ft_originfix(iv);
+		mlx_pixel_put(id[0], id[1], iv[x1], iv[y1], 0x0009ae51);
+		iv[x0] += 1;
 	}
 }
 
