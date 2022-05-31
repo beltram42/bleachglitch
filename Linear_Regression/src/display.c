@@ -6,23 +6,23 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 19:34:35 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/31 16:22:41 by alambert         ###   ########.fr       */
+/*   Updated: 2022/05/31 17:25:26 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lr.h"
 
-void	ft_exit(void)
+int	ft_exit(void *id[2])
 {
 	int	temp;
 
-	temp = mlx_clear_window();
-	temp = mlx_destroy_window();
-	temp = mlx_destroy_display();
-}
-
-void	ft_leave(void)
-{
+	temp = mlx_clear_window(id[0], id[1]);
+	temp = mlx_destroy_window(id[0], id[1]);
+	temp = mlx_destroy_display(id[0]);
+	free(id[0]);
+	free(id[1]);
+	free(id);
+	return (0);
 }
 
 void	ft_display0(void *id[2], long ldb[6][24], long lv[19])
