@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 11:29:34 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/31 17:50:25 by alambert         ###   ########.fr       */
+/*   Updated: 2022/06/01 16:07:41 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ typedef enum e_ldb
 
 typedef enum e_lvar
 {
-	i,
 	iteration_cut,
 	num_data,
+	prod,
 	sumkm,
 	sumprice,
 	sumprod,
@@ -38,8 +38,8 @@ typedef enum e_lvar
 	cost0,
 	cost1,
 	final_b,
-	dtempt0,
-	dtempt1,
+	dtt0,
+	dtt1,
 	t0,
 	t1,
 	tt0,

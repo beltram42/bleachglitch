@@ -6,11 +6,12 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 20:59:44 by anthonylamb       #+#    #+#             */
-/*   Updated: 2022/05/31 18:44:02 by alambert         ###   ########.fr       */
+/*   Updated: 2022/06/01 14:38:54 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lr.h"
+#include "../lr.h"
+#include "../myenums.h"
 
 enum e_ivar
 {
@@ -39,7 +40,7 @@ void	ft_tr_landmark(void *id[2], int iv[4])
 	{
 		ft_originfix(iv);
 		mlx_pixel_put(id[0], id[1], iv[x1], iv[y1], 0x0009ae51);
-		if (iv[y0] >= 0 && iv[y1] == (iv[y1] / 100) * 100)
+		if (iv[y0] > 0 && iv[y1] == (iv[y1] / 100) * 100)
 		{
 			mlx_pixel_put(id[0], id[1], iv[x1] - 1, iv[y1], 0x0009ae51);
 			mlx_pixel_put(id[0], id[1], iv[x1] + 1, iv[y1], 0x0009ae51);
@@ -51,7 +52,7 @@ void	ft_tr_landmark(void *id[2], int iv[4])
 	{
 		ft_originfix(iv);
 		mlx_pixel_put(id[0], id[1], iv[x1], iv[y1], 0x0009ae51);
-		if (iv[x0] >= 0 && iv[x1] == (iv[x1] / 100) * 100)
+		if (iv[x0] > 0 && iv[x1] == (iv[x1] / 100) * 100)
 		{
 			mlx_pixel_put(id[0], id[1], iv[x1], iv[y1] - 1, 0x0009ae51);
 			mlx_pixel_put(id[0], id[1], iv[x1], iv[y1] + 1, 0x0009ae51);
@@ -96,8 +97,8 @@ void	ft_tr_line(void *id[2], int iv[4], long lv[19])
 
 void	ft_tr_userparam(void *id[2], int iv[4], long lv[19], int max[2])
 {
-	iv[x0] = lv[userkm];
-	iv[y0] = lv[userprice];
+	iv[x0] = lv[userkm] / 400;
+	iv[y0] = lv[userprice] / 10;
 	ft_originfix(iv);
 	max[x] = iv[x1];
 	max[y] = iv[y1];

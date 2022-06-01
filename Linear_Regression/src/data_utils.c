@@ -6,11 +6,12 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 18:18:37 by anthonylamb       #+#    #+#             */
-/*   Updated: 2022/05/31 16:26:10 by alambert         ###   ########.fr       */
+/*   Updated: 2022/06/01 16:56:40 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lr.h"
+#include "../lr.h"
+#include "../myenums.h"
 
 void	ft_splitandconvert(char *str, long ldb[6][24])
 {
@@ -27,11 +28,11 @@ void	ft_splitandconvert(char *str, long ldb[6][24])
 		token = ft_strtok_r(NULL, ",\n", &ptr);
 		if (!token)
 			break ;
-		ldb[0][i] = ft_strtol(token, (char **) NULL, 10);
+		ldb[km][i] = ft_strtol(token, (char **) NULL, 10);
 		token = ft_strtok_r(NULL, ",\n", &ptr);
 		if (!token)
 			break ;
-		ldb[1][i] = ft_strtol(token, (char **) NULL, 10);
+		ldb[price][i] = ft_strtol(token, (char **) NULL, 10);
 		i++;
 	}
 }
@@ -75,9 +76,9 @@ void	ft_dataset(float fdb[2][24], float fv[5], long ldb[6][24], long lv[19])
 	while (j < 24)
 	{
 		lv[sumkm] += ldb[km][j];
-		fv[meank] = (float)(ldb[sumkm] / 24);
+		fv[meank] = (float)(lv[sumkm] / 24);
 		lv[sumprice] += ldb[price][j];
-		fv[meanp] = (float)(ldb[sumprice] / 24);
+		fv[meanp] = (float)(lv[sumprice] / 24);
 		ldb[sqkm][j] = ldb[km][j] * ldb[km][j];
 		ldb[sqprice][j] = ldb[price][j] * ldb[price][j];
 		lv[sumsqkm] += ldb[sqkm][j];
@@ -88,7 +89,7 @@ void	ft_dataset(float fdb[2][24], float fv[5], long ldb[6][24], long lv[19])
 		fdb[p][j] = (float)ldb[price][j] / 10000.0;
 		j++;
 	}
-	lv[t1] = (long)(((fv[meank] * lv[sumprice]) - lv[sumprod])
+	lv[t1] = (long)(((fv[meank] * lv[sumprice]) - lv[sumprod]) \
 			/ ((fv[meank] * lv[sumkm]) - lv[sumsqkm]));
 	lv[t0] = (long)(fv[meanp] - (lv[t1] * fv[meank]));
 	fv[learning_rate] = 0.0001;

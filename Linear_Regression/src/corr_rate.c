@@ -6,12 +6,12 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/31 18:09:48 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/31 18:47:51 by alambert         ###   ########.fr       */
+/*   Updated: 2022/06/01 17:00:25 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lr.h"
-#include "myenums.h"
+#include "../lr.h"
+#include "../myenums.h"
 
 enum e_fr
 {

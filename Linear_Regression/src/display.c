@@ -6,12 +6,12 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 19:34:35 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/31 18:43:43 by alambert         ###   ########.fr       */
+/*   Updated: 2022/06/01 10:14:46 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lr.h"
-#include "myenums.h"
+#include "../lr.h"
+#include "../myenums.h"
 
 enum e_ivar
 {

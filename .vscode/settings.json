@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"x.h": "c",
-		"*.ds_store": "c"
+		"*.ds_store": "c",
+		"myenums.h": "c"
 	}
 }
