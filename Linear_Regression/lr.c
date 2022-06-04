@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:35:14 by alambert          #+#    #+#             */
-/*   Updated: 2022/06/01 14:54:43 by alambert         ###   ########.fr       */
+/*   Updated: 2022/06/04 16:17:28 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,24 +24,6 @@ int	ft_exit(void *id[2])
 	exit(EXIT_SUCCESS);
 	return (0);
 }
-/*
-int	ft_fshell(int)
-{
-	return (0);
-}
-
-void	*ft_mlx(void)
-{
-	static void	*mlx_ptr = (void *)0;
-
-	if (!mlx_ptr)
-	{
-		id[0] = mlx_init();
-		id[1] = mlx_new_window(id[0], 1200, 1100, "LR_chart");
-	}
-	return (mlx_ptr);
-}
-*/
 
 int	main(void)
 {
@@ -57,15 +39,37 @@ int	main(void)
 	ft_regr(fdb, fv, lv, ldb);
 	lv[final_b] = lv[tt1] * 10000;
 	fv[k_predict] = 10.0;
-	ft_predict(fdb, lv);
 	ft_corr_rate(fv, ldb, lv);
 	id[0] = mlx_init();
 	id[1] = mlx_new_window(id[0], 1200, 1100, "LR_chart");
 	ft_display0(id, ldb, lv);
-	mlx_key_hook(id[1], &ft_userprice, lv);
+	mlx_key_hook(id[1], ft_up_shell, lv);
 	ft_display1(id, ldb, lv);
 	mlx_hook(id[1], 17, 0, ft_exit, id);
-	mlx_key_hook(id[1], &ft_exit, id);
+	mlx_key_hook(id[1], ft_exit, id);
 	mlx_loop(id[0]);
 	return (0);
 }
+
+/*
+int	ft_exit_shell(void *id[2])
+{
+	
+	return (0);
+}
+
+int	esc_singleton(void);
+
+
+void	*ft_mlx(void)
+{
+	static void	*mlx_ptr = (void *)0;
+
+	if (!mlx_ptr)
+	{
+		id[0] = mlx_init();
+		id[1] = mlx_new_window(id[0], 1200, 1100, "LR_chart");
+	}
+	return (mlx_ptr);
+}
+*/

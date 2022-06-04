@@ -6,21 +6,22 @@
 #    By: alambert <alambert@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/05 11:54:36 by alambert          #+#    #+#              #
-#    Updated: 2022/05/31 18:47:40 by alambert         ###   ########.fr        #
+#    Updated: 2022/06/04 17:39:55 by alambert         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = lr.a
+NAME = lr
 MLX = ./mlx/libmlx.a
 L42 = ./lib42/lib42.a
 CC = clang
 
 SRC =	lr.c \
+		./src/corr_rate.c \
 		./src/data_utils.c \
 		./src/display_utils.c \
 		./src/display.c \
+		./src/f_operat_utils.c \
 		./src/regression_utils.c \
-		./src/corr_rate.c \
 		./src/user_utils.c \
 
 SEC = 20

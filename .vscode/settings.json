@@ -2,6 +2,7 @@
 	"files.associations": {
 		"x.h": "c",
 		"*.ds_store": "c",
-		"myenums.h": "c"
+		"myenums.h": "c",
+		"ctype.h": "c"
 	}
 }

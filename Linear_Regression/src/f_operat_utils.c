@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 10:57:26 by alambert          #+#    #+#             */
-/*   Updated: 2022/06/04 15:20:01 by alambert         ###   ########.fr       */
+/*   Updated: 2022/06/04 17:39:06 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ double	a_f(double a, double b)
 		return (a + b);
 }
 
-double m_f(double a, double b)
+double	m_f(double a, double b)
 {
 	double	ret;
 
@@ -70,7 +70,7 @@ double m_f(double a, double b)
 		return (a * b);
 }
 
-double d_f(double a, double b)
+double	d_f(double a, double b)
 {
 	double	ret;
 
@@ -95,14 +95,6 @@ double d_f(double a, double b)
 	else
 		return (a / b);
 }
-
-
-
-
-
-
-
-
 
 /*
 static void test_a_f(double a, double b)
@@ -143,7 +135,7 @@ int main(void)
 	test_m_f(DBL_MAX, 1);
 	test_m_f(DBL_MAX, -DBL_MAX);
 	test_m_f(DBL_MAX, DBL_MAX); // overflow 
-	test_m_f(-DBL_MAX, -1./2*DBL_MAX); /* overflow 
+	test_m_f(-DBL_MAX, -1./2*DBL_MAX); // overflow 
 	printf("d_f\n");
 	test_d_f(5, -6);
 	test_d_f(DBL_MIN, 2); // underflow 

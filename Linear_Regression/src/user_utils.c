@@ -6,12 +6,18 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 19:48:14 by alambert          #+#    #+#             */
-/*   Updated: 2022/06/01 10:14:27 by alambert         ###   ########.fr       */
+/*   Updated: 2022/06/04 17:02:58 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lr.h"
 #include "../myenums.h"
+
+int	ft_up_shell(long lv[19])
+{
+	ft_userprice(lv);
+	return (0);
+}
 
 void	ft_userprice(long lv[19])
 {
