@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:35:14 by alambert          #+#    #+#             */
-/*   Updated: 2022/06/04 16:17:28 by alambert         ###   ########.fr       */
+/*   Updated: 2022/06/05 18:44:19 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,21 @@ int	ft_exit(void *id[2])
 int	main(void)
 {
 	long		ldb[6][24];
-	long		lv[19];
+	long		lv[12];
 	float		fdb[2][24];
-	float		fv[5];
+	float		fv[16];
 	void		*id[2];
 
-	ft_setzero(fdb, fv, ldb, lv);
+	ft_set0(fdb, fv, ldb, lv);
 	ft_getdata(ldb);
-	ft_dataset(fdb, fv, ldb, lv);
+	ft_dset(fdb, fv, ldb, lv);
 	ft_regr(fdb, fv, lv, ldb);
-	lv[final_b] = lv[tt1] * 10000;
+	fv[final_b] = fv[tt1] * 10000;
 	fv[k_predict] = 10.0;
 	ft_corr_rate(fv, ldb, lv);
 	id[0] = mlx_init();
 	id[1] = mlx_new_window(id[0], 1200, 1100, "LR_chart");
-	ft_display0(id, ldb, lv);
+	ft_display0(id, ldb, lv, fv);
 	mlx_key_hook(id[1], ft_up_shell, lv);
 	ft_display1(id, ldb, lv);
 	mlx_hook(id[1], 17, 0, ft_exit, id);

@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 18:18:37 by alambert          #+#    #+#             */
-/*   Updated: 2022/06/04 17:24:54 by alambert         ###   ########.fr       */
+/*   Updated: 2022/06/05 18:47:58 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	ft_getdata(long ldb[6][24])
 	save = ft_free(&save);
 }
 
-void	ft_setzero(float fdb[2][24], float fv[5], long ldb[6][24], long lv[19])
+void	ft_set0(float fdb[2][24], float fv[16], long ldb[6][24], long lv[12])
 {
 	ft_bzero(ldb, sizeof(long) * 7 * 24);
 	ft_bzero(lv, sizeof(long) * 19);
@@ -68,7 +68,7 @@ void	ft_setzero(float fdb[2][24], float fv[5], long ldb[6][24], long lv[19])
 	ft_bzero(fv, sizeof(float) * 5);
 }
 
-void	ft_dataset(float fdb[2][24], float fv[5], long ldb[6][24], long lv[19])
+void	ft_dset(float fdb[2][24], float fv[16], long ldb[6][24], long lv[12])
 {
 	int	j;
 
@@ -89,9 +89,9 @@ void	ft_dataset(float fdb[2][24], float fv[5], long ldb[6][24], long lv[19])
 		fdb[p][j] = (float)ldb[price][j] / 10000.0;
 		j++;
 	}
-	lv[t1] = (long)(((fv[meank] * lv[sumprice]) - lv[sumprod]) \
+	lv[theta1] = (long)(((fv[meank] * lv[sumprice]) - lv[sumprod]) \
 			/ ((fv[meank] * lv[sumkm]) - lv[sumsqkm]));
-	lv[t0] = (long)(fv[meanp] - (lv[t1] * fv[meank]));
+	lv[theta0] = (long)(fv[meanp] - (lv[theta1] * fv[meank]));
 	fv[learning_rate] = 0.0001;
 	lv[iteration_cut] = 27500;
 	lv[num_data] = 24;

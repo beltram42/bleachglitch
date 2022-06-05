@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 11:29:34 by alambert          #+#    #+#             */
-/*   Updated: 2022/06/01 16:07:41 by alambert         ###   ########.fr       */
+/*   Updated: 2022/06/05 18:48:00 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,8 @@ typedef enum e_lvar
 	sumsqprice,
 	userkm,
 	userprice,
-	cost0,
-	cost1,
-	final_b,
-	dtt0,
-	dtt1,
-	t0,
-	t1,
-	tt0,
-	tt1
+	theta0,
+	theta1
 }		t_lvar;
 
 typedef enum e_fdb
@@ -58,6 +51,17 @@ typedef enum e_fvar
 	learning_rate,
 	meank,
 	meanp,
-	r
+	r,
+	costa,
+	costb,
+	costc,
+	costd,
+	final_b,
+	dtt0,
+	dtt1,
+	t0,
+	t1,
+	tt0,
+	tt1
 }		t_fvar;
 #endif

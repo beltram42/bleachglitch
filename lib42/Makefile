@@ -6,11 +6,13 @@
 #    By: alambert <alambert@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/24 18:46:28 by alambert          #+#    #+#              #
-#    Updated: 2022/05/08 20:28:07 by alambert         ###   ########.fr        #
+#    Updated: 2022/06/05 18:54:52 by alambert         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FILES = ft_atoi.c \
+FILES = ft_absf.c \
+		ft_absi.c \
+		ft_atoi.c \
 		ft_bzero.c \
 		ft_calloc.c \
 		ft_isalnum.c \
@@ -41,6 +43,9 @@ FILES = ft_atoi.c \
 		ft_putendl_fd.c \
 		ft_putnbr_fd.c \
 		ft_putstr_fd.c \
+		ft_sadd.c \
+		ft_sdiv.c \
+		ft_smult.c \
 		ft_split.c \
 		ft_strchr.c \
 		ft_strdup.c \

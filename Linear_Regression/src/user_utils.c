@@ -6,20 +6,20 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 19:48:14 by alambert          #+#    #+#             */
-/*   Updated: 2022/06/04 17:02:58 by alambert         ###   ########.fr       */
+/*   Updated: 2022/06/05 18:48:26 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lr.h"
 #include "../myenums.h"
 
-int	ft_up_shell(long lv[19])
+int	ft_up_shell(long lv[12])
 {
 	ft_userprice(lv);
 	return (0);
 }
 
-void	ft_userprice(long lv[19])
+void	ft_userprice(long lv[12])
 {
 	char	*str;
 	char	*endptr;
@@ -41,7 +41,7 @@ void	ft_userprice(long lv[19])
 	{
 		printf("#km is in the range\n");
 		str = ft_free(&str);
-		lv[userprice] = lv[t0] + (lv[t1] * lv[userkm]);
+		lv[userprice] = lv[theta0] + (lv[theta1] * lv[userkm]);
 		printf("car price for %ld km is: %ld\n", lv[userkm], lv[userprice]);
 	}
 }

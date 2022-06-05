@@ -6,45 +6,77 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 18:09:09 by alambert          #+#    #+#             */
-/*   Updated: 2022/06/04 17:23:36 by alambert         ###   ########.fr       */
+/*   Updated: 2022/06/05 18:53:08 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lr.h"
 #include "../myenums.h"
 
-void	ft_grad_dsc(float fdb[2][24], float fv[5], long lv[19])
+enum e_fr
+{
+	l,
+	m,
+	n,
+	o
+};
+
+void	ft_grad_dsc(float fdb[2][24], float fv[16], long lv[12])
 {
 	int	j;
 
-	lv[dtt0] = 0;
-	lv[dtt1] = 0;
-	lv[cost1] = 0;
+	fv[dtt0] = 0;
+	fv[dtt1] = 0;
+	fv[costa] = 0;
 	j = 0;
 	while (j < lv[num_data])
 	{
-		lv[cost1] += (long)((lv[tt0] * fdb[k][j] + lv[tt1]) \
-				- fdb[p][j] * (lv[tt0] * fdb[k][j] + lv[tt1]) \
-				- fdb[p][j]) / (2 * lv[num_data]);
-		lv[dtt1] += (long)((lv[tt0] * fdb[k][j] + lv[tt1]) \
-				- fdb[p][j]) / lv[num_data];
-		lv[dtt0] += (long)((lv[tt0] * fdb[k][j] + lv[tt1]) \
-		- (fdb[p][j]) * ((long)(fdb[k][j])) / lv[num_data]);
+		fv[costa] += ((fv[tt0] * fdb[k][j] + fv[tt1]) \
+				- fdb[p][j] * (fv[tt0] * fdb[k][j] + fv[tt1]) \
+				- fdb[p][j]) / (2 * 24);
+		fv[dtt1] += ((fv[tt0] * fdb[k][j] + fv[tt1]) \
+				- fdb[p][j]) / 24;
+		fv[dtt0] += ((fv[tt0] * fdb[k][j] + fv[tt1]) \
+		- (fdb[p][j]) * ((fdb[k][j])) / 24);
 		j++;
 	}
-	lv[tt0] = lv[tt0] - (long)(fv[learning_rate] * lv[dtt0]);
-	lv[tt1] = lv[tt1] - (long)(fv[learning_rate] * lv[dtt1]);
+	fv[tt0] = fv[tt0] - (fv[learning_rate] * fv[dtt0]);
+	fv[tt1] = fv[tt1] - (fv[learning_rate] * fv[dtt1]);
 }
 
-void	ft_regr(float fdb[2][24], float fv[5], long lv[19], long ldb[6][24])
+void	ft_regr(float fdb[2][24], float fv[16], long lv[12], long ldb[6][24])
 {
 	int	j;
 
+	fv[costb] = 0;
+	fv[costc] = 0;
 	j = 0;
-	while (j < lv[iteration_cut])
+	while (ft_absf(fv[costb] - fv[costc]) > 0.0000001)
 	{
 		ft_grad_dsc(fdb, fv, lv);
-		lv[cost0] = lv[cost1];
+		fv[costd] = fv[costa];
+		if (j % 2 == 0)
+			fv[costc] = fv[costd];
+		if (j % 2 == 1)
+			fv[costb] = fv[costd];
 		j++;
 	}
+	printf("iteration# = %d", j);
+}
+
+void	ft_corr_rate(float fv[16], long ldb[6][24], long lv[12])
+{
+	float	fr[4];
+	int		j;
+
+	ft_bzero(fr, sizeof(float) * 4);
+	j = 0;
+	while (j < 24)
+	{
+		fr[l] += (ldb[km][j] - fv[meank]) * (ldb[price][j] - fv[meanp]);
+		fr[m] += (ldb[km][j] - fv[meank]) * (ldb[km][j] - fv[meank]);
+		fr[n] += (ldb[price][j] - fv[meanp]) * (ldb[price][j] - fv[meanp]);
+	}
+	fr[o] = sqrtf(fr[m] * fr[n]);
+	fv[r] = fr[l] / fr[o];
 }
