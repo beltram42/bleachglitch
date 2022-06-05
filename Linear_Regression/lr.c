@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:35:14 by alambert          #+#    #+#             */
-/*   Updated: 2022/06/05 18:44:19 by alambert         ###   ########.fr       */
+/*   Updated: 2022/06/05 19:46:37 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,34 @@ int	main(void)
 	float		fdb[2][24];
 	float		fv[16];
 	void		*id[2];
+	int			i;
 
+	i = 0;
 	ft_set0(fdb, fv, ldb, lv);
 	ft_getdata(ldb);
 	ft_dset(fdb, fv, ldb, lv);
+	while (i < 24)
+	{
+		printf("ldb[km][%d] = %ld\n", i, ldb[km][i]);
+		printf("ldb[price]][%d] = %ld\n", i, ldb[price][i]);
+		printf("ldb[sqkm][%d] = %ld\n", i, ldb[sqkm][i]);
+		printf("ldb[sqprice]][%d] = %ld\n", i, ldb[sqprice][i]);
+		printf("ldb[sqxmgap]][%d] = %ld\n", i, ldb[sqxmgap][i]);
+		printf("ldb[sqymgap]][%d] = %ld\n", i, ldb[sqymgap][i]);
+		i++;
+	}
+	printf("lv[iteration_cut] = %ld\n", lv[iteration_cut]);
+	printf("lv[num_data] = %ld\n", lv[num_data]);
+	printf("lv[prod] = %ld\n", lv[prod]);
+	printf("lv[sumkm] = %ld\n", lv[sumkm]);
+	printf("lv[sumprice] = %ld\n", lv[sumprice]);
+	printf("lv[sumprod] = %ld\n", lv[sumprod]);
+	printf("lv[sumsqkm] = %ld\n", lv[sumsqkm]);
+	printf("lv[sumsqprice] = %ld\n", lv[sumsqprice]);
+	printf("lv[userkm] = %ld\n", lv[userkm]);
+	printf("lv[userprice] = %ld\n", lv[userprice]);
+	printf("lv[theta0] = %ld\n", lv[theta0]);
+	printf("lv[theta1] = %ld\n", lv[theta1]);
 	ft_regr(fdb, fv, lv, ldb);
 	fv[final_b] = fv[tt1] * 10000;
 	fv[k_predict] = 10.0;
