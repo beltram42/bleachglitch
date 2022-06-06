@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 18:09:09 by alambert          #+#    #+#             */
-/*   Updated: 2022/06/06 18:37:25 by alambert         ###   ########.fr       */
+/*   Updated: 2022/06/06 20:31:07 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,15 @@ void	ft_grad_dsc(float fdb[9][24], float fv[24])
 				- fdb[p][j]) / (2 * 24);
 		fv[dtt1] += ((fv[tt0] * fdb[k][j] + fv[tt1]) \
 				- fdb[p][j]) / 24;
-		fv[dtt0] += ((fv[tt0] * fdb[k][j] + fv[tt1]) \
-		- fdb[p][j]) * fdb[k][j] / 24;
+		fv[dtt0] += (((fv[tt0] * fdb[k][j] + fv[tt1]) \
+		- fdb[p][j]) * fdb[k][j]) / 24;
 		j++;
 	}
 	fv[tt0] = fv[tt0] - (fv[learning_rate] * fv[dtt0]);
 	fv[tt1] = fv[tt1] - (fv[learning_rate] * fv[dtt1]);
 	printf("fv[costa] = %e\n", fv[costa]);
-	printf("fv[dtt0] = %e\n", fv[dtt0]);
-	printf("fv[dtt1] = %e\n", fv[dtt1]);
+	//printf("fv[dtt0] = %e\n", fv[dtt0]);
+	//printf("fv[dtt1] = %e\n", fv[dtt1]);
 	printf("fv[tt0] = %e\n", fv[tt0]);
 	printf("fv[tt1] = %e\n", fv[tt1]);
 }
@@ -56,22 +56,20 @@ void	ft_regr(float fdb[9][24], float fv[24])
 
 	j = 0;
 	ft_grad_dsc(fdb, fv);
-	fv[costd] = fv[costa];
-	fv[costc] = fv[costd];
+	fv[costc] = fv[costa];
 	ft_grad_dsc(fdb, fv);
-	fv[costd] = fv[costa];
-	fv[costb] = fv[costd];
+	fv[costb] = fv[costa];
 	diff = ft_absf(fv[costb] - fv[costc]);
-	printf("diff0 = %e", diff);
-	while (diff > 0.000002)
+	printf("diff0 = %e\n", diff);
+	while (diff > 0.00000000000000001)
 	{
 		ft_grad_dsc(fdb, fv);
-		fv[costd] = fv[costa];
 		if (j % 2 == 0)
-			fv[costc] = fv[costd];
+			fv[costc] = fv[costa];
 		if (j % 2 == 1)
-			fv[costb] = fv[costd];
+			fv[costb] = fv[costa];
 		diff = ft_absf(fv[costb] - fv[costc]);
+		printf("iteration# = %d\n", j);
 		j++;
 	}
 	printf("diffn = %e\n", diff);
