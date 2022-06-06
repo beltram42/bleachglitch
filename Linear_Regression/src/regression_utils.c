@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 18:09:09 by alambert          #+#    #+#             */
-/*   Updated: 2022/06/06 12:18:49 by alambert         ###   ########.fr       */
+/*   Updated: 2022/06/06 15:18:33 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ void	ft_grad_dsc(float fdb[9][24], float fv[24])
 	}
 	fv[tt0] = fv[tt0] - (fv[learning_rate] * fv[dtt0]);
 	fv[tt1] = fv[tt1] - (fv[learning_rate] * fv[dtt1]);
+	/*printf("fv[costa] = %e\n", fv[costa]);
+	printf("fv[dtt0] = %e\n", fv[dtt0]);
+	printf("fv[dtt1] = %e\n", fv[dtt1]);
+	printf("fv[tt0] = %e\n", fv[tt0]);
+	printf("fv[tt1] = %e\n", fv[tt1]);*/
 }
 
 void	ft_regr(float fdb[9][24], float fv[24])
@@ -61,7 +66,7 @@ void	ft_regr(float fdb[9][24], float fv[24])
 			fv[costb] = fv[costd];
 		j++;
 	}
-	printf("iteration# = %d", j);
+	printf("iteration# = %d\n", j);
 }
 
 void	ft_corr_rate(float fv[24], float fdb[9][24])
