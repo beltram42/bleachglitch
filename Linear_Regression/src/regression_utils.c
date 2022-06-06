@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 18:09:09 by alambert          #+#    #+#             */
-/*   Updated: 2022/06/05 18:53:08 by alambert         ###   ########.fr       */
+/*   Updated: 2022/06/06 08:32:09 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ enum e_fr
 	o
 };
 
-void	ft_grad_dsc(float fdb[2][24], float fv[16], long lv[12])
+void	ft_grad_dsc(float fdb[2][24], float fv[16], long lv[6])
 {
 	int	j;
 
@@ -44,7 +44,7 @@ void	ft_grad_dsc(float fdb[2][24], float fv[16], long lv[12])
 	fv[tt1] = fv[tt1] - (fv[learning_rate] * fv[dtt1]);
 }
 
-void	ft_regr(float fdb[2][24], float fv[16], long lv[12], long ldb[6][24])
+void	ft_regr(float fdb[2][24], float fv[16], long lv[6], long ldb[7][24])
 {
 	int	j;
 
@@ -64,7 +64,7 @@ void	ft_regr(float fdb[2][24], float fv[16], long lv[12], long ldb[6][24])
 	printf("iteration# = %d", j);
 }
 
-void	ft_corr_rate(float fv[16], long ldb[6][24], long lv[12])
+void	ft_corr_rate(float fv[16], long ldb[7][24], long lv[6])
 {
 	float	fr[4];
 	int		j;

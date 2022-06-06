@@ -6,14 +6,14 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 18:18:37 by alambert          #+#    #+#             */
-/*   Updated: 2022/06/05 18:47:58 by alambert         ###   ########.fr       */
+/*   Updated: 2022/06/06 08:32:07 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lr.h"
 #include "../myenums.h"
 
-void	ft_splitandconvert(char *str, long ldb[6][24])
+void	ft_splitandconvert(char *str, long ldb[7][24])
 {
 	char	*token;
 	char	*ptr;
@@ -37,7 +37,7 @@ void	ft_splitandconvert(char *str, long ldb[6][24])
 	}
 }
 
-void	ft_getdata(long ldb[6][24])
+void	ft_getdata(long ldb[7][24])
 {
 	int			fd;
 	char		*save;
@@ -60,7 +60,7 @@ void	ft_getdata(long ldb[6][24])
 	save = ft_free(&save);
 }
 
-void	ft_set0(float fdb[2][24], float fv[16], long ldb[6][24], long lv[12])
+void	ft_set0(float fdb[2][24], float fv[16], long ldb[7][24], long lv[6])
 {
 	ft_bzero(ldb, sizeof(long) * 7 * 24);
 	ft_bzero(lv, sizeof(long) * 19);
@@ -68,7 +68,7 @@ void	ft_set0(float fdb[2][24], float fv[16], long ldb[6][24], long lv[12])
 	ft_bzero(fv, sizeof(float) * 5);
 }
 
-void	ft_dset(float fdb[2][24], float fv[16], long ldb[6][24], long lv[12])
+void	ft_dset(float fdb[2][24], float fv[16], long ldb[7][24], long lv[6])
 {
 	int	j;
 
@@ -94,5 +94,4 @@ void	ft_dset(float fdb[2][24], float fv[16], long ldb[6][24], long lv[12])
 	lv[theta0] = (long)(fv[meanp] - (lv[theta1] * fv[meank]));
 	fv[learning_rate] = 0.0001;
 	lv[iteration_cut] = 27500;
-	lv[num_data] = 24;
 }

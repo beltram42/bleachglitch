@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:35:14 by alambert          #+#    #+#             */
-/*   Updated: 2022/06/05 19:46:37 by alambert         ###   ########.fr       */
+/*   Updated: 2022/06/06 08:32:51 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ int	ft_exit(void *id[2])
 
 int	main(void)
 {
-	long		ldb[6][24];
-	long		lv[12];
+	long		ldb[7][24];
+	long		lv[6];
 	float		fdb[2][24];
 	float		fv[16];
 	void		*id[2];
@@ -50,7 +50,7 @@ int	main(void)
 	}
 	printf("lv[iteration_cut] = %ld\n", lv[iteration_cut]);
 	printf("lv[num_data] = %ld\n", lv[num_data]);
-	printf("lv[prod] = %ld\n", lv[prod]);
+	printf("fv[prod] = %ld\n", fv[prod]);
 	printf("lv[sumkm] = %ld\n", lv[sumkm]);
 	printf("lv[sumprice] = %ld\n", lv[sumprice]);
 	printf("lv[sumprod] = %ld\n", lv[sumprod]);

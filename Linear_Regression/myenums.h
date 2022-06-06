@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 11:29:34 by alambert          #+#    #+#             */
-/*   Updated: 2022/06/05 18:48:00 by alambert         ###   ########.fr       */
+/*   Updated: 2022/06/06 08:32:13 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ typedef enum e_ldb
 {
 	km,
 	price,
+	prod,
 	sqkm,
 	sqprice,
 	sqxmgap,
@@ -26,17 +27,11 @@ typedef enum e_ldb
 typedef enum e_lvar
 {
 	iteration_cut,
-	num_data,
-	prod,
 	sumkm,
 	sumprice,
 	sumprod,
 	sumsqkm,
-	sumsqprice,
-	userkm,
-	userprice,
-	theta0,
-	theta1
+	sumsqprice
 }		t_lvar;
 
 typedef enum e_fdb
@@ -52,6 +47,8 @@ typedef enum e_fvar
 	meank,
 	meanp,
 	r,
+	userkm,
+	userprice,
 	costa,
 	costb,
 	costc,
