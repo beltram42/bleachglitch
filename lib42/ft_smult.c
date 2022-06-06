@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fsmult.c                                        :+:      :+:    :+:   */
+/*   ft_smult.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 10:57:26 by alambert          #+#    #+#             */
-/*   Updated: 2022/06/05 17:34:14 by alambert         ###   ########.fr       */
+/*   Updated: 2022/06/06 20:50:17 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ double	ft_smd(double a, double b)
 		return (a * b);
 }
 
-float	ft_smf(float a, float b)
+long double	ft_smf(long double a, long double b)
 {
-	float	ret;
+	long double	ret;
 
 	if ((a * b) > -FLT_MIN && (a * b) < FLT_MIN && (a * b) != 0)
 	{

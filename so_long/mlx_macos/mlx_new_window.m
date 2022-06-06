@@ -18,7 +18,7 @@ NSOpenGLPixelFormatAttribute pfa_attrs[] =
     0
   };
 
-static const GLfloat pixel_vertexes[8] =
+static const GLlong double pixel_vertexes[8] =
   {
     -1.0 , -1.0,
     1.0, -1.0,
@@ -178,7 +178,7 @@ int get_mouse_button(NSEventType eventtype)
 
   thepoint = [theEvent locationInWindow];
   button = get_mouse_button([theEvent type]);
-  //  printf("Mouse pressed bt %d  pos: %f, %f\n", button, thepoint.x, thepoint.y);
+  //  printf("Mouse pressed bt %d  pos: %Lf, %Lf\n", button, thepoint.x, thepoint.y);
   if (event_funct[4] != NULL)
     event_funct[4](button, (int)(thepoint.x), size_y - 1 - (int)(thepoint.y), event_param[4]);
 }
@@ -190,7 +190,7 @@ int get_mouse_button(NSEventType eventtype)
 
   thepoint = [theEvent locationInWindow];
   button = get_mouse_button([theEvent type]);
-  //  printf("Mouse pressed bt %d  pos: %f, %f\n", button, thepoint.x, thepoint.y);
+  //  printf("Mouse pressed bt %d  pos: %Lf, %Lf\n", button, thepoint.x, thepoint.y);
   if (event_funct[4] != NULL)
     event_funct[4](button, (int)(thepoint.x), size_y - 1 - (int)(thepoint.y), event_param[4]);
 }
@@ -202,7 +202,7 @@ int get_mouse_button(NSEventType eventtype)
 
   thepoint = [theEvent locationInWindow];
   button = get_mouse_button([theEvent type]);
-  //  printf("Mouse pressed bt %d  pos: %f, %f\n", button, thepoint.x, thepoint.y);
+  //  printf("Mouse pressed bt %d  pos: %Lf, %Lf\n", button, thepoint.x, thepoint.y);
   if (event_funct[4] != NULL)
     event_funct[4](button, (int)(thepoint.x), size_y - 1 - (int)(thepoint.y), event_param[4]);
 }
@@ -214,7 +214,7 @@ int get_mouse_button(NSEventType eventtype)
 
   thepoint = [theEvent locationInWindow];
   button = get_mouse_button([theEvent type]);
-  //  printf("Mouse release bt %d  pos: %f, %f\n", button, thepoint.x, thepoint.y);
+  //  printf("Mouse release bt %d  pos: %Lf, %Lf\n", button, thepoint.x, thepoint.y);
   if (event_funct[5] != NULL)
     event_funct[5](button, (int)(thepoint.x), size_y - 1 - (int)(thepoint.y), event_param[5]);
 }
@@ -226,7 +226,7 @@ int get_mouse_button(NSEventType eventtype)
 
   thepoint = [theEvent locationInWindow];
   button = get_mouse_button([theEvent type]);
-  //  printf("Mouse release bt %d  pos: %f, %f\n", button, thepoint.x, thepoint.y);
+  //  printf("Mouse release bt %d  pos: %Lf, %Lf\n", button, thepoint.x, thepoint.y);
   if (event_funct[5] != NULL)
     event_funct[5](button, (int)(thepoint.x), size_y - 1 - (int)(thepoint.y), event_param[5]);
 }
@@ -238,7 +238,7 @@ int get_mouse_button(NSEventType eventtype)
 
   thepoint = [theEvent locationInWindow];
   button = get_mouse_button([theEvent type]);
-  //  printf("Mouse release bt %d  pos: %f, %f\n", button, thepoint.x, thepoint.y);
+  //  printf("Mouse release bt %d  pos: %Lf, %Lf\n", button, thepoint.x, thepoint.y);
   if (event_funct[5] != NULL)
     event_funct[5](button, (int)(thepoint.x), size_y - 1 - (int)(thepoint.y), event_param[5]);
 }
@@ -248,7 +248,7 @@ int get_mouse_button(NSEventType eventtype)
   NSPoint thepoint;
 
   thepoint = [theEvent locationInWindow];
-  //  printf("Mouse moved  pos: %f, %f\n", thepoint.x, thepoint.y);
+  //  printf("Mouse moved  pos: %Lf, %Lf\n", thepoint.x, thepoint.y);
   if (event_funct[6] != NULL)
     event_funct[6]((int)(thepoint.x), size_y - 1 - (int)(thepoint.y), event_param[6]);
 }
@@ -259,7 +259,7 @@ int get_mouse_button(NSEventType eventtype)
   NSPoint thepoint;
 
   thepoint = [theEvent locationInWindow];
-  //  printf("Mouse moved  pos: %f, %f\n", thepoint.x, thepoint.y);
+  //  printf("Mouse moved  pos: %Lf, %Lf\n", thepoint.x, thepoint.y);
   if (event_funct[6] != NULL)
     event_funct[6]((int)(thepoint.x), size_y - 1 - (int)(thepoint.y), event_param[6]);
 }
@@ -270,7 +270,7 @@ int get_mouse_button(NSEventType eventtype)
   NSPoint thepoint;
 
   thepoint = [theEvent locationInWindow];
-  //  printf("Mouse moved  pos: %f, %f\n", thepoint.x, thepoint.y);
+  //  printf("Mouse moved  pos: %Lf, %Lf\n", thepoint.x, thepoint.y);
   if (event_funct[6] != NULL)
     event_funct[6]((int)(thepoint.x), size_y - 1 - (int)(thepoint.y), event_param[6]);
 }
@@ -281,7 +281,7 @@ int get_mouse_button(NSEventType eventtype)
   NSPoint thepoint;
 
   thepoint = [theEvent locationInWindow];
-  //  printf("Mouse moved  pos: %f, %f\n", thepoint.x, thepoint.y);
+  //  printf("Mouse moved  pos: %Lf, %Lf\n", thepoint.x, thepoint.y);
   if (event_funct[6] != NULL)
     event_funct[6]((int)(thepoint.x), size_y - 1 - (int)(thepoint.y), event_param[6]);
 }
@@ -291,7 +291,7 @@ int get_mouse_button(NSEventType eventtype)
 {
   NSPoint thepoint;
   int     button;
-  float	  sens;
+  long double	  sens;
 
   if (event_funct[4] == NULL)
     return ;
@@ -560,7 +560,7 @@ int get_mouse_button(NSEventType eventtype)
   glUniform2f(glsl.loc_image_size, img->width, -img->height);
 
   glBindBuffer(GL_ARRAY_BUFFER, imgctx->vbuffer);
-  glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2*sizeof(GLfloat), (void*)0);
+  glVertexAttribPointer(0, 2, GL_long double, GL_FALSE, 2*sizeof(GLlong double), (void*)0);
   glEnableVertexAttribArray(0);
 
   glEnable(GL_BLEND);
@@ -575,14 +575,14 @@ int get_mouse_button(NSEventType eventtype)
 
 - (void) mlx_gl_draw_font:(mlx_img_list_t *)img andCtx:(mlx_img_ctx_t *)imgctx andX:(int)x andY:(int)y andColor:(int)color glyphX:(int)gx glyphY:(int)gy
 {
-  GLfloat color_tab[4];
+  GLlong double color_tab[4];
 
   if (pixel_nb >0)
     [self mlx_gl_draw];
 
-  color_tab[0] = ((float)((color&0xFF0000)>>16))/255.0;
-  color_tab[1] = ((float)((color&0xFF00)>>8))/255.0;
-  color_tab[2] = ((float)((color&0xFF)>>0))/255.0;
+  color_tab[0] = ((long double)((color&0xFF0000)>>16))/255.0;
+  color_tab[1] = ((long double)((color&0xFF00)>>8))/255.0;
+  color_tab[2] = ((long double)((color&0xFF)>>0))/255.0;
   color_tab[3] = 1.0;
   glUseProgram(glsl.font_program);
 
@@ -597,7 +597,7 @@ int get_mouse_button(NSEventType eventtype)
   glUniform2f(glsl.loc_font_atlassize, img->width, img->height);
 
   glBindBuffer(GL_ARRAY_BUFFER, imgctx->vbuffer);
-  glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2*sizeof(GLfloat), (void*)0);
+  glVertexAttribPointer(0, 2, GL_long double, GL_FALSE, 2*sizeof(GLlong double), (void*)0);
   glEnableVertexAttribArray(0);
 
   glEnable(GL_BLEND);
@@ -622,7 +622,7 @@ int get_mouse_button(NSEventType eventtype)
   glUniform1i(glsl.loc_pixel_texture, 0);
   
   glBindBuffer(GL_ARRAY_BUFFER, pixel_vbuffer);
-  glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 2*sizeof(GLfloat), (void*)0);
+  glVertexAttribPointer(0, 2, GL_long double, GL_FALSE, 2*sizeof(GLlong double), (void*)0);
   glEnableVertexAttribArray(0);
 
   glEnable(GL_BLEND);

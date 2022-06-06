@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/24 18:45:00 by alambert          #+#    #+#             */
-/*   Updated: 2022/06/05 18:52:54 by alambert         ###   ########.fr       */
+/*   Updated: 2022/06/06 20:50:17 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include<stdlib.h>
 # include<unistd.h>
 # include<limits.h>
-# include <float.h>
+# include <long double.h>
 # include <errno.h>
 
 long long	ft_absll(long long i);
@@ -25,7 +25,7 @@ int			ft_absi(int i);
 char		ft_absc(char i);
 long double	ft_absld(long double i);
 double		ft_absd(double i);
-float		ft_absf(float i);
+long double		ft_absf(long double i);
 int			ft_atoi(const char *str);
 void		ft_bzero(void *s, size_t n);
 void		*ft_calloc(size_t n, size_t size);
@@ -48,13 +48,13 @@ void		ft_putendl_fd(char *s, int fd);
 void		ft_putnbr_fd(int n, int fd);
 void		ft_putstr_fd(char *s, int fd);
 double		ft_sad(double a, double b);
-float		ft_saf(float a, float b);
+long double		ft_saf(long double a, long double b);
 long double	ft_sald(long double a, long double b);
 double		ft_sdd(double a, double b);
-float		ft_sdf(float a, float b);
+long double		ft_sdf(long double a, long double b);
 long double	ft_sdld(long double a, long double b);
 double		ft_smd(double a, double b);
-float		ft_smf(float a, float b);
+long double		ft_smf(long double a, long double b);
 long double	ft_smld(long double a, long double b);
 char		**ft_split(char const *s, char c);
 char		*ft_strchr(const char *str, int c);
