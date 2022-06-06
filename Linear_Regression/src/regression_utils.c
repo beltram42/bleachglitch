@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 18:09:09 by alambert          #+#    #+#             */
-/*   Updated: 2022/06/06 15:18:33 by alambert         ###   ########.fr       */
+/*   Updated: 2022/06/06 18:37:25 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	ft_grad_dsc(float fdb[9][24], float fv[24])
 {
 	int	j;
 
-	fv[dtt0] = 0;
-	fv[dtt1] = 0;
-	fv[costa] = 0;
+	fv[dtt0] = 0.0;
+	fv[dtt1] = 0.0;
+	fv[costa] = 0.0;
 	j = 0;
 	while (j < 24)
 	{
@@ -37,26 +37,33 @@ void	ft_grad_dsc(float fdb[9][24], float fv[24])
 		fv[dtt1] += ((fv[tt0] * fdb[k][j] + fv[tt1]) \
 				- fdb[p][j]) / 24;
 		fv[dtt0] += ((fv[tt0] * fdb[k][j] + fv[tt1]) \
-		- (fdb[p][j]) * ((fdb[k][j])) / 24);
+		- fdb[p][j]) * fdb[k][j] / 24;
 		j++;
 	}
 	fv[tt0] = fv[tt0] - (fv[learning_rate] * fv[dtt0]);
 	fv[tt1] = fv[tt1] - (fv[learning_rate] * fv[dtt1]);
-	/*printf("fv[costa] = %e\n", fv[costa]);
+	printf("fv[costa] = %e\n", fv[costa]);
 	printf("fv[dtt0] = %e\n", fv[dtt0]);
 	printf("fv[dtt1] = %e\n", fv[dtt1]);
 	printf("fv[tt0] = %e\n", fv[tt0]);
-	printf("fv[tt1] = %e\n", fv[tt1]);*/
+	printf("fv[tt1] = %e\n", fv[tt1]);
 }
 
 void	ft_regr(float fdb[9][24], float fv[24])
 {
-	int	j;
+	int		j;
+	float	diff;
 
-	fv[costb] = 0;
-	fv[costc] = 0;
 	j = 0;
-	while (ft_absf(fv[costb] - fv[costc]) > 0.0000001)
+	ft_grad_dsc(fdb, fv);
+	fv[costd] = fv[costa];
+	fv[costc] = fv[costd];
+	ft_grad_dsc(fdb, fv);
+	fv[costd] = fv[costa];
+	fv[costb] = fv[costd];
+	diff = ft_absf(fv[costb] - fv[costc]);
+	printf("diff0 = %e", diff);
+	while (diff > 0.000002)
 	{
 		ft_grad_dsc(fdb, fv);
 		fv[costd] = fv[costa];
@@ -64,8 +71,10 @@ void	ft_regr(float fdb[9][24], float fv[24])
 			fv[costc] = fv[costd];
 		if (j % 2 == 1)
 			fv[costb] = fv[costd];
+		diff = ft_absf(fv[costb] - fv[costc]);
 		j++;
 	}
+	printf("diffn = %e\n", diff);
 	printf("iteration# = %d\n", j);
 }
 

@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/05 14:35:14 by alambert          #+#    #+#             */
-/*   Updated: 2022/06/06 16:04:57 by alambert         ###   ########.fr       */
+/*   Updated: 2022/06/06 18:24:41 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ int	main(void)
 	/*ft_corr_rate(fv, fdb);
 	printf("fv[r] = %f\n", fv[r]);*/
 	printf("\n");
-	//ft_regr(fdb, fv);
-	printf("fv[costa] = %f\n", fv[costa]);
+	ft_regr(fdb, fv);
+	/*printf("fv[costa] = %f\n", fv[costa]);
 	printf("fv[costb] = %f\n", fv[costb]);
 	printf("fv[costc] = %f\n", fv[costc]);
 	printf("fv[costd] = %f\n", fv[costd]);
@@ -80,7 +80,9 @@ int	main(void)
 	printf("fv[dtt1] = %f\n", fv[dtt1]);
 	printf("fv[tt0] = %f\n", fv[tt0]);
 	printf("fv[tt1] = %f\n", fv[tt1]);
-	ft_userprice(fv);
+	printf("lf[userkm] = %f\n", fv[userkm]);
+	printf("lf[userprice] = %f\n", fv[userprice]);*/
+	//ft_userprice(fv);
 	return (0);
 }
 
@@ -90,8 +92,6 @@ int	main(void)
 	id[1] = mlx_new_window(id[0], 1200, 1100, "LR_chart");
 	ft_display0(id, fv, fdb);
 	mlx_key_hook(id[1], ft_up_shell, fv);
-	printf("lf[userkm] = %f\n", fv[userkm]);
-	printf("lf[userprice] = %f\n", fv[userprice]);
 	ft_display1(id, fv);
 	mlx_hook(id[1], 17, 0, ft_exit, id);
 	mlx_key_hook(id[1], ft_exit, id);

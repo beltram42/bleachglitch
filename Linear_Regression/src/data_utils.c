@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 18:18:37 by alambert          #+#    #+#             */
-/*   Updated: 2022/06/06 12:17:49 by alambert         ###   ########.fr       */
+/*   Updated: 2022/06/06 16:14:23 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ void	ft_getdata(float fdb[9][24])
 
 void	ft_set0(float fdb[9][24], float fv[24])
 {
-	ft_bzero(fdb, sizeof(float) * 2 * 24);
-	ft_bzero(fv, sizeof(float) * 5);
+	ft_bzero(fdb, sizeof(float) * 9 * 24);
+	ft_bzero(fv, sizeof(float) * 24);
 }
 
 void	ft_dset(float fdb[9][24], float fv[24])
