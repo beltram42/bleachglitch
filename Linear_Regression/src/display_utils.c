@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/29 20:59:44 by anthonylamb       #+#    #+#             */
-/*   Updated: 2022/06/06 08:32:05 by alambert         ###   ########.fr       */
+/*   Updated: 2022/06/06 11:48:29 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	ft_tr_landmark(void *id[2], int iv[4])
 	}
 }
 
-void	ft_tr_dots(void *id[2], long ldb[7][24], long lv[6], int iv[4])
+void	ft_tr_dots(void *id[2], int iv[4], float fdb[9][24])
 {
 	int	j;
 	int	d;
@@ -69,8 +69,8 @@ void	ft_tr_dots(void *id[2], long ldb[7][24], long lv[6], int iv[4])
 	j = 0;
 	while (j < 24)
 	{
-		iv[xa] = (int)(ldb[km][j] / 400);
-		iv[ya] = (int)(ldb[price][j] / 10);
+		iv[xa] = (int)(fdb[km][j] / 400);
+		iv[ya] = (int)(fdb[price][j] / 10);
 		ft_originfix(iv);
 		d = -1;
 		while (d <= 1)
@@ -83,7 +83,7 @@ void	ft_tr_dots(void *id[2], long ldb[7][24], long lv[6], int iv[4])
 	}
 }
 
-void	ft_tr_line(void *id[2], int iv[4], float fv[16])
+void	ft_tr_line(void *id[2], int iv[4], float fv[24])
 {
 	ft_bzero(iv, sizeof(int) * 4);
 	while (iv[ya] >= 0)
@@ -95,10 +95,10 @@ void	ft_tr_line(void *id[2], int iv[4], float fv[16])
 	}
 }
 
-void	ft_tr_userparam(void *id[2], int iv[4], long lv[6], int max[2])
+void	ft_tr_userparam(void *id[2], int iv[4], int max[2], float fv[24])
 {
-	iv[xa] = lv[userkm] / 400;
-	iv[ya] = lv[userprice] / 10;
+	iv[xa] = fv[userkm] / 400;
+	iv[ya] = fv[userprice] / 10;
 	ft_originfix(iv);
 	max[x] = iv[xb];
 	max[y] = iv[yb];

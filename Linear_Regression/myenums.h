@@ -6,42 +6,34 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 11:29:34 by alambert          #+#    #+#             */
-/*   Updated: 2022/06/06 08:32:13 by alambert         ###   ########.fr       */
+/*   Updated: 2022/06/06 11:14:31 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MYENUMS_H
 # define MYENUMS_H
 
-typedef enum e_ldb
+typedef enum e_fdb
 {
 	km,
 	price,
 	prod,
 	sqkm,
 	sqprice,
+	k,
+	p,
 	sqxmgap,
 	sqymgap
-}		t_ldb;
+}		t_fdb;
 
-typedef enum e_lvar
+typedef enum e_fvar
 {
 	iteration_cut,
 	sumkm,
 	sumprice,
 	sumprod,
 	sumsqkm,
-	sumsqprice
-}		t_lvar;
-
-typedef enum e_fdb
-{
-	k,
-	p
-}		t_fdb;
-
-typedef enum e_fvar
-{
+	sumsqprice,
 	k_predict,
 	learning_rate,
 	meank,

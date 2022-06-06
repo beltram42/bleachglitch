@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 18:09:09 by alambert          #+#    #+#             */
-/*   Updated: 2022/06/06 08:32:09 by alambert         ###   ########.fr       */
+/*   Updated: 2022/06/06 12:18:49 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ enum e_fr
 	o
 };
 
-void	ft_grad_dsc(float fdb[2][24], float fv[16], long lv[6])
+void	ft_grad_dsc(float fdb[9][24], float fv[24])
 {
 	int	j;
 
@@ -29,7 +29,7 @@ void	ft_grad_dsc(float fdb[2][24], float fv[16], long lv[6])
 	fv[dtt1] = 0;
 	fv[costa] = 0;
 	j = 0;
-	while (j < lv[num_data])
+	while (j < 24)
 	{
 		fv[costa] += ((fv[tt0] * fdb[k][j] + fv[tt1]) \
 				- fdb[p][j] * (fv[tt0] * fdb[k][j] + fv[tt1]) \
@@ -44,7 +44,7 @@ void	ft_grad_dsc(float fdb[2][24], float fv[16], long lv[6])
 	fv[tt1] = fv[tt1] - (fv[learning_rate] * fv[dtt1]);
 }
 
-void	ft_regr(float fdb[2][24], float fv[16], long lv[6], long ldb[7][24])
+void	ft_regr(float fdb[9][24], float fv[24])
 {
 	int	j;
 
@@ -53,7 +53,7 @@ void	ft_regr(float fdb[2][24], float fv[16], long lv[6], long ldb[7][24])
 	j = 0;
 	while (ft_absf(fv[costb] - fv[costc]) > 0.0000001)
 	{
-		ft_grad_dsc(fdb, fv, lv);
+		ft_grad_dsc(fdb, fv);
 		fv[costd] = fv[costa];
 		if (j % 2 == 0)
 			fv[costc] = fv[costd];
@@ -64,7 +64,7 @@ void	ft_regr(float fdb[2][24], float fv[16], long lv[6], long ldb[7][24])
 	printf("iteration# = %d", j);
 }
 
-void	ft_corr_rate(float fv[16], long ldb[7][24], long lv[6])
+void	ft_corr_rate(float fv[24], float fdb[9][24])
 {
 	float	fr[4];
 	int		j;
@@ -73,9 +73,9 @@ void	ft_corr_rate(float fv[16], long ldb[7][24], long lv[6])
 	j = 0;
 	while (j < 24)
 	{
-		fr[l] += (ldb[km][j] - fv[meank]) * (ldb[price][j] - fv[meanp]);
-		fr[m] += (ldb[km][j] - fv[meank]) * (ldb[km][j] - fv[meank]);
-		fr[n] += (ldb[price][j] - fv[meanp]) * (ldb[price][j] - fv[meanp]);
+		fr[l] += (fdb[km][j] - fv[meank]) * (fdb[price][j] - fv[meanp]);
+		fr[m] += (fdb[km][j] - fv[meank]) * (fdb[km][j] - fv[meank]);
+		fr[n] += (fdb[price][j] - fv[meanp]) * (fdb[price][j] - fv[meanp]);
 	}
 	fr[o] = sqrtf(fr[m] * fr[n]);
 	fv[r] = fr[l] / fr[o];

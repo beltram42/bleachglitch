@@ -6,14 +6,14 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 18:18:37 by alambert          #+#    #+#             */
-/*   Updated: 2022/06/06 08:32:07 by alambert         ###   ########.fr       */
+/*   Updated: 2022/06/06 12:17:49 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lr.h"
 #include "../myenums.h"
 
-void	ft_splitandconvert(char *str, long ldb[7][24])
+void	ft_splitandconvert(char *str, float fdb[9][24])
 {
 	char	*token;
 	char	*ptr;
@@ -28,16 +28,16 @@ void	ft_splitandconvert(char *str, long ldb[7][24])
 		token = ft_strtok_r(NULL, ",\n", &ptr);
 		if (!token)
 			break ;
-		ldb[km][i] = ft_strtol(token, (char **) NULL, 10);
+		fdb[km][i] = ft_strtol(token, (char **) NULL, 10);
 		token = ft_strtok_r(NULL, ",\n", &ptr);
 		if (!token)
 			break ;
-		ldb[price][i] = ft_strtol(token, (char **) NULL, 10);
+		fdb[price][i] = ft_strtol(token, (char **) NULL, 10);
 		i++;
 	}
 }
 
-void	ft_getdata(long ldb[7][24])
+void	ft_getdata(float fdb[9][24])
 {
 	int			fd;
 	char		*save;
@@ -56,42 +56,42 @@ void	ft_getdata(long ldb[7][24])
 	len = read(fd, save, len);
 	save[len] = '\0';
 	close(fd);
-	ft_splitandconvert(save, ldb);
+	ft_splitandconvert(save, fdb);
 	save = ft_free(&save);
 }
 
-void	ft_set0(float fdb[2][24], float fv[16], long ldb[7][24], long lv[6])
+void	ft_set0(float fdb[9][24], float fv[24])
 {
-	ft_bzero(ldb, sizeof(long) * 7 * 24);
-	ft_bzero(lv, sizeof(long) * 19);
 	ft_bzero(fdb, sizeof(float) * 2 * 24);
 	ft_bzero(fv, sizeof(float) * 5);
 }
 
-void	ft_dset(float fdb[2][24], float fv[16], long ldb[7][24], long lv[6])
+void	ft_dset(float fdb[9][24], float fv[24])
 {
 	int	j;
 
 	j = 0;
 	while (j < 24)
 	{
-		lv[sumkm] += ldb[km][j];
-		fv[meank] = (float)(lv[sumkm] / 24);
-		lv[sumprice] += ldb[price][j];
-		fv[meanp] = (float)(lv[sumprice] / 24);
-		ldb[sqkm][j] = ldb[km][j] * ldb[km][j];
-		ldb[sqprice][j] = ldb[price][j] * ldb[price][j];
-		lv[sumsqkm] += ldb[sqkm][j];
-		lv[sumsqprice] += ldb[sqprice][j];
-		ldb[prod][j] = ldb[km][j] * ldb[price][j];
-		lv[sumprod] += ldb[prod][j];
-		fdb[k][j] = (float)ldb[km][j] / 10000.0;
-		fdb[p][j] = (float)ldb[price][j] / 10000.0;
+		fv[sumkm] += fdb[km][j];
+		fv[meank] = fv[sumkm] / 24.0;
+		fv[sumprice] += fdb[price][j];
+		fv[meanp] = fv[sumprice] / 24.0;
+		fdb[sqkm][j] = cpowf(fdb[km][j], 2);
+		fdb[sqprice][j] = cpowf(fdb[price][j], 2);
+		fv[sumsqkm] += fdb[sqkm][j];
+		fv[sumsqprice] += fdb[sqprice][j];
+		fdb[prod][j] = fdb[km][j] * fdb[price][j];
+		fv[sumprod] += fdb[prod][j];
+		fdb[k][j] = fdb[km][j] / 10000.0;
+		fdb[p][j] = fdb[price][j] / 10000.0;
+		fdb[sqxmgap][j] = cpowf(fdb[km][j] - fv[meank], 2);
+		fdb[sqymgap][j] = cpowf(fdb[price][j] - fv[meanp], 2);
 		j++;
 	}
-	lv[theta1] = (long)(((fv[meank] * lv[sumprice]) - lv[sumprod]) \
-			/ ((fv[meank] * lv[sumkm]) - lv[sumsqkm]));
-	lv[theta0] = (long)(fv[meanp] - (lv[theta1] * fv[meank]));
+	fv[t1] = ((fv[meank] * fv[sumprice]) - fv[sumprod]) \
+			/ ((fv[meank] * fv[sumkm]) - fv[sumsqkm]);
+	fv[t0] = (fv[meanp] - (fv[t1] * fv[meank]));
 	fv[learning_rate] = 0.0001;
-	lv[iteration_cut] = 27500;
+	fv[iteration_cut] = 27500.0;
 }
