@@ -6,20 +6,20 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/30 19:48:14 by alambert          #+#    #+#             */
-/*   Updated: 2022/06/06 12:23:14 by alambert         ###   ########.fr       */
+/*   Updated: 2022/06/07 17:59:30 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lr.h"
 #include "../myenums.h"
 
-int	ft_up_shell(float fv[24])
+int	ft_up_shell(long double fv[24])
 {
 	ft_userprice(fv);
 	return (0);
 }
 
-void	ft_userprice(float fv[24])
+void	ft_userprice(long double fv[24])
 {
 	char	*str;
 	char	*endptr;
@@ -42,6 +42,6 @@ void	ft_userprice(float fv[24])
 		printf("#km is in the range\n");
 		str = ft_free(&str);
 		fv[userprice] = fv[t0] + (fv[t1] * fv[userkm]);
-		printf("price for %e km: %e\n", fv[userkm], fv[userprice]);
+		printf("price for %Lf km: %Lf\n", fv[userkm], fv[userprice]);
 	}
 }

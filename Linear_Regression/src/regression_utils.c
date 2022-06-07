@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 18:09:09 by alambert          #+#    #+#             */
-/*   Updated: 2022/06/06 20:31:07 by alambert         ###   ########.fr       */
+/*   Updated: 2022/06/07 17:59:03 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ enum e_fr
 	o
 };
 
-void	ft_grad_dsc(float fdb[9][24], float fv[24])
+void	ft_grad_dsc(long double fdb[9][24], long double fv[24])
 {
 	int	j;
 
@@ -42,46 +42,47 @@ void	ft_grad_dsc(float fdb[9][24], float fv[24])
 	}
 	fv[tt0] = fv[tt0] - (fv[learning_rate] * fv[dtt0]);
 	fv[tt1] = fv[tt1] - (fv[learning_rate] * fv[dtt1]);
-	printf("fv[costa] = %e\n", fv[costa]);
-	//printf("fv[dtt0] = %e\n", fv[dtt0]);
-	//printf("fv[dtt1] = %e\n", fv[dtt1]);
-	printf("fv[tt0] = %e\n", fv[tt0]);
-	printf("fv[tt1] = %e\n", fv[tt1]);
 }
 
-void	ft_regr(float fdb[9][24], float fv[24])
+void	ft_regr(long double fdb[9][24], long double fv[24])
 {
 	int		j;
-	float	diff;
+	long double	diff;
 
 	j = 0;
 	ft_grad_dsc(fdb, fv);
 	fv[costc] = fv[costa];
 	ft_grad_dsc(fdb, fv);
 	fv[costb] = fv[costa];
-	diff = ft_absf(fv[costb] - fv[costc]);
-	printf("diff0 = %e\n", diff);
-	while (diff > 0.00000000000000001)
+	diff = ft_absld(fv[costb] - fv[costc]);
+	printf("diff0 = %Lf\n", diff);
+	while (diff > 0.0000000001)
 	{
 		ft_grad_dsc(fdb, fv);
 		if (j % 2 == 0)
 			fv[costc] = fv[costa];
 		if (j % 2 == 1)
 			fv[costb] = fv[costa];
-		diff = ft_absf(fv[costb] - fv[costc]);
+		diff = ft_absld(fv[costb] - fv[costc]);
 		printf("iteration# = %d\n", j);
+		printf("diff = %LE\n", diff);
+		printf("fv[costa] = %Lf\n", fv[costa]);
+		printf("fv[dtt0] = %LE\n", fv[dtt0]);
+		printf("fv[dtt1] = %LE\n", fv[dtt1]);
+		printf("fv[tt0] = %LE\n", fv[tt0]);
+		printf("fv[tt1] = %LE\n", fv[tt1]);
 		j++;
 	}
-	printf("diffn = %e\n", diff);
+	printf("diffn = %LE\n", diff);
 	printf("iteration# = %d\n", j);
 }
 
-void	ft_corr_rate(float fv[24], float fdb[9][24])
+void	ft_corr_rate(long double fv[24], long double fdb[9][24])
 {
-	float	fr[4];
+	long double	fr[4];
 	int		j;
 
-	ft_bzero(fr, sizeof(float) * 4);
+	ft_bzero(fr, sizeof(long double) * 4);
 	j = 0;
 	while (j < 24)
 	{

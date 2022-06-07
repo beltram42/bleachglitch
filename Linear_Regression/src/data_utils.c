@@ -6,14 +6,14 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/28 18:18:37 by alambert          #+#    #+#             */
-/*   Updated: 2022/06/06 16:14:23 by alambert         ###   ########.fr       */
+/*   Updated: 2022/06/07 17:58:59 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lr.h"
 #include "../myenums.h"
 
-void	ft_splitandconvert(char *str, float fdb[9][24])
+void	ft_splitandconvert(char *str, long double fdb[9][24])
 {
 	char	*token;
 	char	*ptr;
@@ -37,7 +37,7 @@ void	ft_splitandconvert(char *str, float fdb[9][24])
 	}
 }
 
-void	ft_getdata(float fdb[9][24])
+void	ft_getdata(long double fdb[9][24])
 {
 	int			fd;
 	char		*save;
@@ -60,13 +60,13 @@ void	ft_getdata(float fdb[9][24])
 	save = ft_free(&save);
 }
 
-void	ft_set0(float fdb[9][24], float fv[24])
+void	ft_set0(long double fdb[9][24], long double fv[24])
 {
-	ft_bzero(fdb, sizeof(float) * 9 * 24);
-	ft_bzero(fv, sizeof(float) * 24);
+	ft_bzero(fdb, sizeof(long double) * 9 * 24);
+	ft_bzero(fv, sizeof(long double) * 24);
 }
 
-void	ft_dset(float fdb[9][24], float fv[24])
+void	ft_dset(long double fdb[9][24], long double fv[24])
 {
 	int	j;
 
@@ -92,6 +92,6 @@ void	ft_dset(float fdb[9][24], float fv[24])
 	fv[t1] = ((fv[meank] * fv[sumprice]) - fv[sumprod]) \
 			/ ((fv[meank] * fv[sumkm]) - fv[sumsqkm]);
 	fv[t0] = (fv[meanp] - (fv[t1] * fv[meank]));
-	fv[learning_rate] = 0.0001;
+	fv[learning_rate] = 0.015;
 	fv[iteration_cut] = 27500.0;
 }
