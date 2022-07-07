@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Jul  7 12:41:24 2022
+# Make data base, printed on Thu Jul  7 20:37:41 2022
 
 # Variables
 
@@ -41,11 +41,15 @@ CURDIR := /mnt/nfs/homes/alambert/Documents/bleachglitch
 # makefile
 SHELL = /bin/sh
 # environment
+GDM_LANG = en
+# environment
+VTE_VERSION = 6003
+# environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-_ = /usr/share/code/code
+_ = /usr/bin/code
 # environment
-JOURNAL_STREAM = 9:754584
+JOURNAL_STREAM = 9:736213
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # makefile
@@ -65,15 +69,15 @@ DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/101471/bus
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-MANAGERPID = 154655
+MANAGERPID = 195462
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/101471/vscode-ipc-3d670fbc-19d4-48fe-9682-7187fc17f276.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/101471/vscode-ipc-17ff2e54-36cf-4fa2-963e-44d12913ace1.sock
 # environment
-VSCODE_CWD = /mnt/nfs/homes/alambert
+VSCODE_CWD = /mnt/nfs/homes/alambert/Documents/bleachglitch
 # environment
 XDG_SESSION_PATH = /org/freedesktop/DisplayManager/Session4
 # environment
-KRB5CCNAME = FILE:/tmp/krb5cc_101471_GnyWS4
+KRB5CCNAME = FILE:/tmp/krb5cc_101471_drTLVO
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -83,7 +87,7 @@ GPG_AGENT_INFO = /run/user/101471/gnupg/S.gpg-agent:0:1
 # environment
 LSCOLORS = Gxfxcxdxbxegedabagacad
 # environment
-SESSION_MANAGER = local/e1r4p15.42.fr:@/tmp/.ICE-unix/155171,unix/e1r4p15.42.fr:/tmp/.ICE-unix/155171
+SESSION_MANAGER = local/e1r4p21.42.fr:@/tmp/.ICE-unix/195983,unix/e1r4p21.42.fr:/tmp/.ICE-unix/195983
 # environment
 XDG_RUNTIME_DIR = /run/user/101471
 # environment
@@ -93,19 +97,21 @@ VSCODE_LOG_STACK = false
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 0d09c79b353842e18603ec5490b3723e
+INVOCATION_ID = 4a2402ce4ea7423d9f44cfd7211d6d32
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# environment
 XDG_GREETER_DATA_DIR = /var/lib/lightdm-data/alambert
 # environment
-LS_COLORS = 
+LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
 # environment
 XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/101471/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 155539
+GIO_LAUNCHED_DESKTOP_FILE_PID = 196366
 # automatic
 %F = $(notdir $%)
 # environment
@@ -117,7 +123,7 @@ PWD = /mnt/nfs/homes/alambert/Documents/bleachglitch
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 155135
+SSH_AGENT_PID = 195946
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -126,6 +132,8 @@ GTK_MODULES = gail:atk-bridge
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 HOME = /mnt/nfs/homes/alambert
+# environment
+VSCODE_CLI = 1
 # environment
 VSCODE_CODE_CACHE_PATH = /mnt/nfs/homes/alambert/.config/Code/CachedData/30d9c6cd9483b2cc586687151bcbcd635f373630
 # environment
@@ -142,6 +150,8 @@ GNOME_DESKTOP_SESSION_ID = this-is-deprecated
 ^D = $(patsubst %/,%,$(dir $^))
 # environment
 MAKELEVEL := 0
+# environment
+COLORTERM = truecolor
 # default
 MAKE = $(MAKE_COMMAND)
 # default
@@ -149,7 +159,7 @@ MAKECMDGOALS := all
 # environment
 QT_IM_MODULE = ibus
 # environment
-SHLVL = 1
+SHLVL = 2
 # environment
 IM_CONFIG_PHASE = 1
 # default
@@ -169,11 +179,13 @@ LESS = -R
 # default
 MAKE_COMMAND := make
 # environment
-OLDPWD = /mnt/nfs/homes/alambert
+OLDPWD = /mnt/nfs/homes/alambert/Documents
 # default
 .VARIABLES := 
 # automatic
 *F = $(notdir $*)
+# environment
+LANGUAGE = en
 # environment
 XDG_SEAT_PATH = /org/freedesktop/DisplayManager/Seat0
 # environment
@@ -191,6 +203,8 @@ GDK_BACKEND = x11
 # automatic
 +F = $(notdir $+)
 # environment
+NO_AT_BRIDGE = 1
+# environment
 QT_ACCESSIBILITY = 1
 # environment
 DEFAULTS_PATH = /usr/share/gconf/ubuntu.default.path
@@ -204,8 +218,12 @@ PAGER = less
 LC_ALL = C
 # environment
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
+# environment
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/fedae4d2_02a4_42bc_858b_d8083b6ba7a0
 # automatic
 ^F = $(notdir $^)
+# environment
+GNOME_TERMINAL_SERVICE = :1.130
 # default
 SUFFIXES := 
 # environment
@@ -219,11 +237,13 @@ GJS_DEBUG_OUTPUT = stderr
 # environment
 LANG = C
 # environment
+TERM = xterm-256color
+# environment
 DOCKER_HOST = unix:///run/user/101471/docker.sock
 # environment
-VSCODE_PID = 155539
+VSCODE_PID = 196366
 # variable set hash-table stats:
-# Load=105/1024=10%, Rehash=0, Collisions=7/127=6%
+# Load=115/1024=11%, Rehash=0, Collisions=11/137=8%
 
 # Pattern-specific Variable Values
 
@@ -231,7 +251,7 @@ VSCODE_PID = 155539
 
 # Directories
 
-# . (device 56, inode 15713254): 11 files, no impossibilities.
+# . (device 55, inode 15713254): 11 files, no impossibilities.
 
 # 11 files, no impossibilities in 1 directories.
 
@@ -273,6 +293,7 @@ GNUmakefile:
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
+ 
 #  Failed to be updated.
 
 # files hash-table stats:
@@ -283,13 +304,12 @@ GNUmakefile:
 
 # No general ('VPATH' variable) search path.
 
- 
-# strcache buffers: 1 (0) / strings = 19 / storage = 179 B / avg = 9 B
-# current buf: size = 8162 B / used = 179 B / count = 19 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 19 / storage = 187 B / avg = 9 B
+# current buf: size = 8162 B / used = 187 B / count = 19 / avg = 9 B
 
 # strcache performance: lookups = 22 / hit rate = 13%
 # hash-table stats:
 # Load=19/8192=0%, Rehash=0, Collisions=1/22=5%
-# Finished Make data base on Thu Jul  7 12:41:24 2022
+# Finished Make data base on Thu Jul  7 20:37:41 2022
 
  

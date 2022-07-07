@@ -5,17 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/24 18:45:00 by alambert          #+#    #+#             */
-/*   Updated: 2022/07/05 21:12:37 by alambert         ###   ########.fr       */
+/*   Created: 2022/07/07 20:44:08 by alambert          #+#    #+#             */
+/*   Updated: 2022/07/07 20:49:03 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIB42_H
 # define LIB42_H
 
-# include<stdlib.h>
-# include<unistd.h>
-# include<limits.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include <limits.h>
 # include <float.h>
 # include <errno.h>
 
