@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/03 17:43:17 by alambert          #+#    #+#             */
-/*   Updated: 2022/07/05 21:14:05 by alambert         ###   ########.fr       */
+/*   Created: 2022/05/10 13:45:55 by alambert          #+#    #+#             */
+/*   Updated: 2022/07/05 21:14:28 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib42.h"
 
-char	*ft_strchr(const char *s, int c)
+void	ft_putnbr(int nb)
 {
-	while (*s != (char)c)
+	long	big_nb;
+	char	printbuf;
+
+	big_nb = nb;
+	printbuf = 0;
+	if (big_nb < 0)
 	{
-		if (*s == 0)
-			return (0);
-		s++;
+		write (1, "-", 1);
+		big_nb = -big_nb;
 	}
-	return ((char *)s);
+	if (big_nb / 10)
+	{
+		ft_putnbr(big_nb / 10);
+	}
+	printbuf = big_nb % 10 + '0';
+	ft_putchar(printbuf);
 }

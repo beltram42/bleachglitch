@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:24:41 by alambert          #+#    #+#             */
-/*   Updated: 2022/06/06 21:05:32 by alambert         ###   ########.fr       */
+/*   Updated: 2022/07/05 21:12:19 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ double	ft_absd(double i)
 	return ((double)ft_absld(i));
 }
 
-float	ft_absf( i)
+float	ft_absf(float i)
 {
-	return (()ft_absd(i));
+	if (i < 0)
+		return (-i);
+	else
+		return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 23:43:50 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/08 20:33:03 by alambert         ###   ########.fr       */
+/*   Updated: 2022/07/05 21:13:36 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,11 @@ size_t	ft_strlen(const char *s)
 {
 	const char	*p;
 
-	p = s;
-	while (*p)
-		p++;
+	if (s)
+	{
+		p = s;
+		while (*p)
+			p++;
+	}
 	return (p - s);
 }

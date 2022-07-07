@@ -1,24 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_itoatmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/03 17:43:17 by alambert          #+#    #+#             */
-/*   Updated: 2022/07/05 21:14:05 by alambert         ###   ########.fr       */
+/*   Created: 2021/12/08 18:51:32 by alambert          #+#    #+#             */
+/*   Updated: 2022/07/05 21:15:29 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib42.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_itoa(int i)
 {
-	while (*s != (char)c)
+	static char	buf[9 + 2];
+	char		*p;
+
+	ft_bzero(buf, sizeof(char) * 11);
+	p = buf + 9 + 1;
+	if (i >= 0)
 	{
-		if (*s == 0)
-			return (0);
-		s++;
+		while (i != 0)
+		{
+			*--p = '0' + (i % 10);
+			i /= 10;
+		}
+		return (p);
 	}
-	return ((char *)s);
+	else
+	{
+		while (i != 0)
+		{
+			*--p = '0' - (i % 10);
+			i /= 10;
+		}
+		*--p = '-';
+	}
+	return (p);
 }

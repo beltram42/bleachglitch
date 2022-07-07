@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/03 17:43:17 by alambert          #+#    #+#             */
-/*   Updated: 2022/07/05 21:14:05 by alambert         ###   ########.fr       */
+/*   Created: 2022/05/10 13:44:26 by alambert          #+#    #+#             */
+/*   Updated: 2022/07/05 21:14:22 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib42.h"
 
-char	*ft_strchr(const char *s, int c)
+void	ft_putstr(char *str)
 {
-	while (*s != (char)c)
+	while (*str != '\0')
 	{
-		if (*s == 0)
-			return (0);
-		s++;
+		ft_putchar(*str);
+		str++;
 	}
-	return ((char *)s);
 }

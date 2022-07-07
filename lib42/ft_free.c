@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/03 17:43:17 by alambert          #+#    #+#             */
-/*   Updated: 2022/07/05 21:14:05 by alambert         ###   ########.fr       */
+/*   Created: 2022/05/09 16:27:55 by alambert          #+#    #+#             */
+/*   Updated: 2022/07/05 21:15:57 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib42.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_free(char **str)
 {
-	while (*s != (char)c)
-	{
-		if (*s == 0)
-			return (0);
-		s++;
-	}
-	return ((char *)s);
+	if (!*str)
+		return (NULL);
+	free(*str);
+	*str = NULL;
+	return (NULL);
 }

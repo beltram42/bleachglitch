@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/03 17:43:17 by alambert          #+#    #+#             */
-/*   Updated: 2022/07/05 21:14:05 by alambert         ###   ########.fr       */
+/*   Created: 2022/06/13 10:34:57 by alambert          #+#    #+#             */
+/*   Updated: 2022/07/05 21:14:08 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib42.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strcat(char *dst, const char *src)
 {
-	while (*s != (char)c)
-	{
-		if (*s == 0)
-			return (0);
-		s++;
-	}
-	return ((char *)s);
+	size_t	dstlen;
+	size_t	srclen;
+
+	dstlen = ft_strlen(dst);
+	srclen = ft_strlen(src);
+	ft_memcpy(dst + dstlen, src, srclen + 1);
+	return (dst);
 }

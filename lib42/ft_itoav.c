@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_itoav.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/03 17:43:17 by alambert          #+#    #+#             */
-/*   Updated: 2022/07/05 21:14:05 by alambert         ###   ########.fr       */
+/*   Created: 2022/06/28 12:01:58 by alambert          #+#    #+#             */
+/*   Updated: 2022/07/05 21:15:26 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lib42.h"
 
-char	*ft_strchr(const char *s, int c)
+void	ft_itoav(int i, char buf[12])
 {
-	while (*s != (char)c)
+	char	*p;
+	long	j;
+
+	j = (long)i;
+	p = buf + 11;
+	*p = '\0';
+	if (j == 0)
+		*--p = '0';
+	while (j != 0)
 	{
-		if (*s == 0)
-			return (0);
-		s++;
+		*--p = '0' + (ft_absl(j) % 10);
+		j /= 10;
 	}
-	return ((char *)s);
+	if (i < 0)
+		*--p = '-';
 }
