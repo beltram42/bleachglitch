@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace.c                                       :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/30 19:57:03 by alambert          #+#    #+#             */
-/*   Updated: 2022/07/11 14:06:12 by alambert         ###   ########.fr       */
+/*   Created: 2022/06/13 09:27:47 by alambert          #+#    #+#             */
+/*   Updated: 2022/07/11 14:00:50 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	isspace(int c)
+char	*ft_strncat(char *s1, const char *s2, size_t n)
 {
-	if (c == '\t' || c == '\n' || \
-		c == '\v' || c == '\f' || c == '\r' || c == ' ')
-		return (1);
-	return (0);
+	size_t	len1;
+	size_t	len2;
+
+	len1 = ft_strlen(s1);
+	len2 = ft_strlen(s2);
+	if (len2 < n)
+		ft_strcpy(&s1[len1], s2);
+	else
+	{
+		ft_strncpy(&s1[len1], s2, n);
+		s1[len1 + n] = '\0';
+	}
+	return (s1);
 }

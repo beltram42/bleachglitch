@@ -6,9 +6,12 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 10:57:26 by alambert          #+#    #+#             */
-/*   Updated: 2022/07/11 13:32:09 by alambert         ###   ########.fr       */
+/*   Updated: 2022/07/11 14:03:02 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <limits.h>
+#include <errno.h>
 
 long double	ft_smld(long double a, long double b)
 {

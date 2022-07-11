@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace.c                                       :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/30 19:57:03 by alambert          #+#    #+#             */
-/*   Updated: 2022/07/11 14:06:12 by alambert         ###   ########.fr       */
+/*   Created: 2022/06/13 09:39:32 by alambert          #+#    #+#             */
+/*   Updated: 2022/07/11 14:04:59 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	isspace(int c)
+char	*ft_strcpy(char *dst, const char *src)
 {
-	if (c == '\t' || c == '\n' || \
-		c == '\v' || c == '\f' || c == '\r' || c == ' ')
-		return (1);
-	return (0);
+	size_t	len;
+
+	len = ft_strlen(src);
+	ft_memcpy(dst, src, len + 1);
+	return (dst);
 }
