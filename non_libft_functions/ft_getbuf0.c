@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 19:29:48 by alambert          #+#    #+#             */
-/*   Updated: 2022/07/11 11:21:50 by alambert         ###   ########.fr       */
+/*   Updated: 2022/07/11 12:21:06 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,3 +40,7 @@ char	*ft_getbuf0(int buf)
 		ft_free(&bin);
 	return ((char *)save);
 }
+
+
+/* Retrieves stdin's input in a pre-sized buf and 
+discards what exceeds our buf size in read's buffer */
