@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 16:25:22 by alambert          #+#    #+#             */
-/*   Updated: 2022/07/11 13:33:54 by alambert         ###   ########.fr       */
+/*   Updated: 2022/07/11 17:47:41 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	ft_str_spn_fb(const char *str, const char *set, int gear)
 	forward (gear = 1) or backward (gear = -1) span
 	returns the length of the sub string which:
  	. begins at *str or, if gear = -1, at *str + strlen - 1
- 	. stops when the first occurrence of a character contained in *set is found
+	. contains only characters from set
+ 	. stops when the first occurrence of a character not contained in *set is found
 	function equals to strlen if gear = 1 and set = "" 
  */
