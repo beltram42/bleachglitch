@@ -6,25 +6,25 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 18:51:11 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/08 18:52:29 by alambert         ###   ########.fr       */
+/*   Updated: 2022/07/11 13:33:21 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-int ft_str_spn_cspn(const char *str, const char *set, int gear)
+int	ft_str_spn_cspn(const char *str, const char *set, int gear)
 {
 	const char	*p;
 	const char	*s;
-	
+
 	p = str;
 	while (*p)
 	{
 		s = set;
 		s = ft_strchr(s, *p);
 		if (s == 0 && gear == 1)
-			break;
+			break ;
 		if (s != 0 && gear == -1)
-			break;
+			break ;
 		else
 			p++;
 	}
@@ -32,6 +32,7 @@ int ft_str_spn_cspn(const char *str, const char *set, int gear)
 }
 
 /*
+Multi purpose span+len function:
 	strspn : gear = 1
 	strcspn : gear = -1
 	strlen : set = ""

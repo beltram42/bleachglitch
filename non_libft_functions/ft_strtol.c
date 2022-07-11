@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 19:09:50 by alambert          #+#    #+#             */
-/*   Updated: 2022/07/11 11:25:55 by alambert         ###   ########.fr       */
+/*   Updated: 2022/07/11 13:38:16 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,3 +131,5 @@ long	ft_strtol(const char *str, char **endptr, int base)
 		*endptr = (char *)(s + val[MOVE] - 1);
 	return ((long)val[RES]);
 }
+
+/* home made strtol; errno not implemented*/

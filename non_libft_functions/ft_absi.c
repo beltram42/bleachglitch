@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:24:41 by alambert          #+#    #+#             */
-/*   Updated: 2022/07/11 11:22:21 by alambert         ###   ########.fr       */
+/*   Updated: 2022/07/11 13:39:09 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,3 +32,6 @@ char	ft_absc(char i)
 {
 	return ((char)ft_absi(i));
 }
+
+/*A set of abs tools for integers;
+needs revamp to include unsigned ones*/

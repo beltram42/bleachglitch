@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 12:01:58 by alambert          #+#    #+#             */
-/*   Updated: 2022/07/11 11:22:52 by alambert         ###   ########.fr       */
+/*   Updated: 2022/07/11 13:35:10 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,3 +28,6 @@ void	ft_itoav(int i, char buf[12])
 	if (i < 0)
 		*--p = '-';
 }
+
+/*a new void itoa with no malloc;
+if needed, add p as a param as **p*/

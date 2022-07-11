@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 10:57:26 by alambert          #+#    #+#             */
-/*   Updated: 2022/07/11 11:23:28 by alambert         ###   ########.fr       */
+/*   Updated: 2022/07/11 13:32:09 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,3 +87,5 @@ float	ft_smf(float a, float b)
 	else
 		return (a * b);
 }
+
+/*A set of safe multiply tools for complexes*/

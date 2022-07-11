@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 16:25:22 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/08 18:56:13 by alambert         ###   ########.fr       */
+/*   Updated: 2022/07/11 13:33:54 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,5 @@ int	ft_str_spn_fb(const char *str, const char *set, int gear)
 	returns the length of the sub string which:
  	. begins at *str or, if gear = -1, at *str + strlen - 1
  	. stops when the first occurrence of a character contained in *set is found
-	function simulates strlen if gear = 1 and set = "" 
+	function equals to strlen if gear = 1 and set = "" 
  */

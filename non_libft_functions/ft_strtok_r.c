@@ -6,7 +6,7 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/21 17:59:40 by alambert          #+#    #+#             */
-/*   Updated: 2022/07/11 11:25:33 by alambert         ###   ########.fr       */
+/*   Updated: 2022/07/11 13:34:59 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,3 +33,5 @@ char	*ft_strtok_r(char *str, const char *sep, char **saveptr)
 	}
 	return (NULL);
 }
+
+/*Great classic*/
