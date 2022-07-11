@@ -1,18 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_absi.c                                          :+:      :+:    :+:   */
+/*   ft_absf.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:24:41 by alambert          #+#    #+#             */
-/*   Updated: 2022/07/05 21:12:24 by alambert         ###   ########.fr       */
+/*   Updated: 2022/07/11 11:22:27 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib42.h"
-
-long long	ft_absll(long long i)
+long double	ft_absld(long double i)
 {
 	if (i < 0)
 		return (-i);
@@ -20,17 +18,15 @@ long long	ft_absll(long long i)
 		return (i);
 }
 
-long	ft_absl(long i)
+double	ft_absd(double i)
 {
-	return ((long)ft_absll(i));
+	return ((double)ft_absld(i));
 }
 
-int	ft_absi(int i)
+float	ft_absf(float i)
 {
-	return ((int)ft_absl(i));
-}
-
-char	ft_absc(char i)
-{
-	return ((char)ft_absi(i));
+	if (i < 0)
+		return (-i);
+	else
+		return (i);
 }

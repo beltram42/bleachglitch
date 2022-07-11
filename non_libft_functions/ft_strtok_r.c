@@ -1,20 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_iscntrl.c                                       :+:      :+:    :+:   */
+/*   ft_strtok_r.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/13 17:28:47 by alambert          #+#    #+#             */
-/*   Updated: 2022/07/05 21:15:46 by alambert         ###   ########.fr       */
+/*   Created: 2022/01/21 17:59:40 by alambert          #+#    #+#             */
+/*   Updated: 2022/07/11 11:25:33 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib42.h"
-
-int	ft_iscntrl(char c)
+char	*ft_strtok_r(char *str, const char *sep, char **saveptr)
 {
-	if (c <= 31 || c == 127)
-		return (1);
-	return (0);
+	char	*start;
+
+	if (!str)
+		str = *saveptr;
+	while (*str && ft_strchr(sep, *str))
+		++str;
+	if (*str)
+	{
+		start = (char *)str;
+		*saveptr = start + 1;
+		while (**saveptr && !ft_strchr(sep, **saveptr))
+			++*saveptr;
+		if (**saveptr)
+		{
+			**saveptr = '\0';
+			++*saveptr;
+		}
+		return (start);
+	}
+	return (NULL);
 }

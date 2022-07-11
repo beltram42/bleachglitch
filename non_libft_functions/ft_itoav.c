@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_malmove.c                                       :+:      :+:    :+:   */
+/*   ft_itoav.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/10 17:09:00 by alambert          #+#    #+#             */
-/*   Updated: 2022/07/05 21:14:57 by alambert         ###   ########.fr       */
+/*   Created: 2022/06/28 12:01:58 by alambert          #+#    #+#             */
+/*   Updated: 2022/07/11 11:22:52 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib42.h"
-
-char	*ft_malmove(const char *dest, const char *src, int len1, int len2)
+void	ft_itoav(int i, char buf[12])
 {
-	char	*res;
+	char	*p;
+	long	j;
 
-	res = malloc(sizeof(char) * (len1 + len2 + 1));
-	if (!res)
-		return (NULL);
-	ft_memmove((void *)(res), (void *)dest, len1);
-	ft_memmove((void *)(res + len1), (void *)(src), len2 + 1);
-	return (res);
+	j = (long)i;
+	p = buf + 11;
+	*p = '\0';
+	if (j == 0)
+		*--p = '0';
+	while (j != 0)
+	{
+		*--p = '0' + (ft_absl(j) % 10);
+		j /= 10;
+	}
+	if (i < 0)
+		*--p = '-';
 }

@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_absf.c                                          :+:      :+:    :+:   */
+/*   ft_strpbrk.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/05 16:24:41 by alambert          #+#    #+#             */
-/*   Updated: 2022/07/07 20:57:31 by alambert         ###   ########.fr       */
+/*   Created: 2022/01/21 18:53:00 by alambert          #+#    #+#             */
+/*   Updated: 2022/07/11 11:24:53 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib42.h"
-
-long double	ft_absld(long double i)
+char	*ft_strpbrk(const char *str, const char *set)
 {
-	if (i < 0)
-		return (-i);
-	else
-		return (i);
-}
+	const char	*s;
 
-double	ft_absd(double i)
-{
-	return ((double)ft_absld(i));
-}
-
-float	ft_absf(float i)
-{
-	if (i < 0)
-		return (-i);
-	else
-		return (i);
+	while (*str != '\0')
+	{
+		s = set;
+		while (*s != '\0')
+			if (*s++ == *str)
+				return (char *)str;
+		++str;
+	}
+	return (0);
 }

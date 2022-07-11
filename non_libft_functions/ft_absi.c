@@ -1,22 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   ft_absi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/09 16:27:55 by alambert          #+#    #+#             */
-/*   Updated: 2022/07/05 21:15:57 by alambert         ###   ########.fr       */
+/*   Created: 2022/06/05 16:24:41 by alambert          #+#    #+#             */
+/*   Updated: 2022/07/11 11:22:21 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib42.h"
-
-char	*ft_free(char **str)
+long long	ft_absll(long long i)
 {
-	if (!*str)
-		return (NULL);
-	free(*str);
-	*str = NULL;
-	return (NULL);
+	if (i < 0)
+		return (-i);
+	else
+		return (i);
+}
+
+long	ft_absl(long i)
+{
+	return ((long)ft_absll(i));
+}
+
+int	ft_absi(int i)
+{
+	return ((int)ft_absl(i));
+}
+
+char	ft_absc(char i)
+{
+	return ((char)ft_absi(i));
 }

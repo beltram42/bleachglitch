@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strpbrk.c                                       :+:      :+:    :+:   */
+/*   ft_strnlen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/21 18:53:00 by alambert          #+#    #+#             */
-/*   Updated: 2022/05/08 18:33:33 by alambert         ###   ########.fr       */
+/*   Created: 2021/12/05 23:08:48 by alambert          #+#    #+#             */
+/*   Updated: 2022/07/11 11:24:08 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char  *ft_strpbrk(const char *str, const char *set)
+size_t	ft_strnlen(const char *s, size_t maxlen)
 {
-	const char  *s;
-	while (*str != '\0')
+	size_t	len;
+
+	len = 0;
+	while (s++, len < maxlen)
 	{
-		s = set;
-		while (*s != '\0')
-			if (*s++ == *str)
-				return (char *)str;
-		++str;
+		if (!*s)
+			break;
+		len++;
 	}
-	return 0;
+	return (len);
 }
