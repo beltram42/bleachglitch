@@ -6,22 +6,20 @@
 /*   By: alambert <alambert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 19:02:38 by alambert          #+#    #+#             */
-/*   Updated: 2022/07/19 00:00:12 by alambert         ###   ########.fr       */
+/*   Updated: 2022/07/19 15:24:38 by alambert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lib42.h"
-
-void	ft_filesize(int fd, int count[2])
+void	ft_filesize(char *filename, int count[2])
 {
+	int		fd;
 	int		len;
 	char	*bin;
 
+	fd = open("data.csv", O_RDONLY);
 	count[0] = -1;
 	count[1] = 1;
 	bin = malloc(sizeof(char) + 1);
-	if (!bin)
-		return ;
 	len = 1;
 	while (len != 0)
 	{
@@ -37,8 +35,7 @@ void	ft_filesize(int fd, int count[2])
 		count[0] += 1;
 	}
 	bin = ft_free(&bin);
-	if (bin)
-		ft_free(&bin);
+	close(fd);
 }
 
 /* count[0] : char number,
